@@ -7,7 +7,7 @@ void Search(BST *_Node, int value)
 	
 	while(1)
 	{
-		if(Value->key == value)
+		if(Value->key == value)      // if there is same value
 			return true;
 		else
 			return false;
