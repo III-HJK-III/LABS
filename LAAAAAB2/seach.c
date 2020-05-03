@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "BST.h"
 
-void Search(BST *_Node, int value)
+bool Search(BST *_Node, int value)
 {
 	Node *Value = _Node->root;
 	
