@@ -25,8 +25,22 @@ void insert(BST *_Node, int value)
 	{
 		if(Value->key < value)                   //if value is bigger
 		{
-			Value->r_child = NewNode;
-			return;
+			if(Value->r_child == NULL)           //if r_child is empty
+			{
+				Value->r_child = NewNode;
+				return;
+			}
+			Value = Value->r_child;              //if r_child is full
+		}
+		
+		else                                     //if value is smaller
+		{
+			if(Value->l_child == NULL)           //if l_child is empty
+			{
+				Value->l_child = NewNode; 
+				return;
+			}
+			Value = Value->l_child;              //if l_child is full
 		}
 	}
 }
