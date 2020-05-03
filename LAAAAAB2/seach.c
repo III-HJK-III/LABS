@@ -9,7 +9,10 @@ void Search(BST *_Node, int value)
 	{
 		if(Value->key == value)      // if there is same value
 			return true;
-		else
-			return false;
+			
+		if(Value->key < value)       // bigger
+			Value = Value->r_child
+		else                         // smaller
+			Value = Value->l_child
 	}
 }
