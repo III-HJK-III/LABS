@@ -3,8 +3,7 @@
 
 void insert(BST *_Node, int value)
 {
-	Node *NewNode;
-	NewNode = (Node *)malloc(sizeof(Node));
+	Node *NewNode = (Node *)malloc(sizeof(Node));
 	
 	if (_Node->root == NULL)
 	{
@@ -14,4 +13,9 @@ void insert(BST *_Node, int value)
 		NewNode->key = value;
 		return;
 	}
+	
+	NewNode->l_child = NULL;
+	NewNode->r_child = NULL;
+	NewNode->key = value;
+	
 }
