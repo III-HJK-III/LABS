@@ -15,6 +15,11 @@ void insert(BST *_Node, int value)
 		return;
 	}
 	
+	if (Serch())                                 //what if value is already there?
+	{
+		return;
+	}
+	
 	NewNode->l_child = NULL;
 	NewNode->r_child = NULL;
 	NewNode->key = value;
