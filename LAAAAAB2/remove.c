@@ -2,7 +2,7 @@
 
 #include "bst.h"
 
-void remove_Xmutex(const Node &x)
+void remove_Xmutex(Node &x)
 {
     Node* p = root;//what 2 erase
     Node* q = NULL;//p's parent
@@ -26,10 +26,7 @@ void remove_Xmutex(const Node &x)
     }
 
     if(!p)//not found
-    {
-        printf("Not Found!!\n");
         return;
-    }
 
     if(!p->l_child && !p->r_child)//no child
     {
