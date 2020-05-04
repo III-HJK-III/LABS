@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "BST.h"
 
 Node* Search(BST *_Node, int value)
