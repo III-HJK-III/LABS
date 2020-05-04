@@ -6,6 +6,11 @@
 bool insert(BST *_Tree, unsigned int value)
 {
 	Node *NewNode = (Node *)malloc(sizeof(Node));
+/*
+	for(int i = 0; i < sizeof(Node); i++)        //Exception
+		if(NewNode[i] == NULL)
+			return FALSE;
+*/			
 	init_node(NewNode, value);                   //make NewNode
 	
 	if (_Tree->root == NULL)                     //if root is empty
