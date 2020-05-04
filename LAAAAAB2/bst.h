@@ -33,4 +33,24 @@ struct myArr
     unsigned int index;//last val's next index
 };
 
-//function prototype
+/************function prototype*****************/
+
+//basic func. for bst usage
+void init_tree(BST &tree);
+void init_myArr(myArr &arr);
+void init_node(node &nd, unsigned int inval);
+
+void io_trav(BST &tree, myArr &arr);
+void ioP(Node* go, maArr &arr);
+
+
+//node searching func.
+Node* Search(BST *_Node, int value);
+
+
+//node inserting func.
+bool insert(BST *_Tree, unsigned int value);
+
+
+//node removing func.
+void remove_Xmutex(Node &x);
