@@ -42,9 +42,12 @@ void ioP(Node* go, maArr &arr)
     if(go)
     {
         ioP(go->l_child, arr);
+
+        pthread_mutex_lock(arr->arrLock);
         arr->index++;
         arr->keyvals[index-1] = go->key;
-
-        ioP(go->r_child, arr;
+        pthread_mutex_unlock(arr->arrLock);
+        
+        ioP(go->r_child, arr);
     }
 }
