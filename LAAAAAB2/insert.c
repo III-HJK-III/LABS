@@ -1,21 +1,20 @@
-#include <stdio.h>
-#include "BST.h"
+/*Made by ¹Ú°æ³ç from DKU, 32161553*/ 
+#include "bst.h"
 
-bool insert(BST *_Node, int value)
+bool insert(BST *_Tree, unsigned int value)
 {
 	Node *NewNode = (Node *)malloc(sizeof(Node));
-	Node *Value;                                 //For value 
 	
-	if (_Node->root == NULL)                     //if root is empty
+	if (_Tree->root == NULL)                     //if root is empty
 	{
-		_Node->root = NewNode;
+		_Tree->root = NewNode;
 		NewNode->l_child = NULL;
 		NewNode->r_child = NULL;
 		NewNode->key = value;
 		return TRUE;
 	}
 	
-	if (Serch(value) == NULL)                                 //what if value is already there?
+	if (Serch(value) == NULL)                    //what if value is already there?
 	{
 		return FALSE;
 	}
@@ -24,7 +23,7 @@ bool insert(BST *_Node, int value)
 	NewNode->r_child = NULL;
 	NewNode->key = value;
 	
-	Value = _Node->root;
+	Node *Value = _Tree->root;                   //declare Value for value
 
 	While(1)
 	{
