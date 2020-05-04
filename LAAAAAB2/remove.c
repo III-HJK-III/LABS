@@ -1,3 +1,5 @@
+/* 32160320@dankook.ac.kr 권혁준 */
+
 #include "bst.h"
 
 void remove_Xmutex(const Node &x)
