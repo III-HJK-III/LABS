@@ -15,7 +15,7 @@ bool insert(BST *_Node, int value)
 		return TRUE;
 	}
 	
-	if (Serch())                                 //what if value is already there?
+	if (Serch(value) == NULL)                                 //what if value is already there?
 	{
 		return FALSE;
 	}
