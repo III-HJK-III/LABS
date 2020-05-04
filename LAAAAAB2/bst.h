@@ -33,4 +33,4 @@ struct myArr
     unsigned int index;//last val's next index
 };
 
-//testing testing
+//function prototype

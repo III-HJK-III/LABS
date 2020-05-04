@@ -12,7 +12,6 @@ int main(int argc, char *argv[])
 
     int option = atoi(argv[1]);
 
-    Node* (*sch_f)();//search function
     void (*ins_f)();//insert function
     void (*rm_f)();//remove function
 
@@ -37,8 +36,8 @@ int main(int argc, char *argv[])
             assert( (option >= 0) && (option <= 2));
         }
 
-    BST Yggdrasill;//our main bst. start point
-    init_tree(Yggdrasill);
+    BST Sephiroth;//our main bst. start point
+    init_tree(Sephiroth);
     myArr input_key;
     init_myArr(input_key);
 
@@ -49,7 +48,7 @@ int main(int argc, char *argv[])
     }
 
     //getting key_vals into input_keys array
-    assert( io_trav(Yggdrasill, input_keys, MAX_NODE) );
+    assert( io_trav(Sephiroth, input_keys, MAX_NODE) );
 
     
 
