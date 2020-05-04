@@ -1,9 +1,12 @@
-/*Made by ¹Ú°æ³ç from DKU, 32161553*/ 
+/*****************************************************/
+/**********Made by ¹Ú°æ³ç from DKU, 32161553**********/
+/*****************************************************/ 
 #include "bst.h"
 
 bool insert(BST *_Tree, unsigned int value)
 {
 	Node *NewNode = (Node *)malloc(sizeof(Node));
+	init_node(NewNode, value);                   //make NewNode
 	
 	if (_Tree->root == NULL)                     //if root is empty
 	{
@@ -19,10 +22,7 @@ bool insert(BST *_Tree, unsigned int value)
 		return FALSE;
 	}
 	
-	NewNode->l_child = NULL;
-	NewNode->r_child = NULL;
-	NewNode->key = value;
-	
+
 	Node *Value = _Tree->root;                   //declare Value for value
 
 	While(1)
