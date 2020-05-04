@@ -2,6 +2,7 @@
 #pragma once
 
 #include <stdio.h>
+#include <pthread.h>
 
 struct BST
 {
@@ -10,7 +11,7 @@ struct BST
 
 struct Node
 {
-    int key;
+    unsigned int key;
     Node* l_child;
     Node* r_child;
 };
