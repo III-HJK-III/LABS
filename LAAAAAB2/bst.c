@@ -14,9 +14,9 @@ void init_myArr(myArr &arr)
     pthread_mutex_init (arr -> arrLock, NULL);
 }
 
-void init_node(node &nd)
+void init_node(node &nd, unsigned int inval)
 {
-    nd -> key = 0;
+    nd -> key = inval;
     nd -> l_child = NULL;
     nd -> r_child = NULL;
     pthread_mutex_init (nd -> nodeLock, NULL);

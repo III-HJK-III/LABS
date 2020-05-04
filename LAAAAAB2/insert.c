@@ -25,7 +25,7 @@ bool insert(BST *_Node, int value)
 	NewNode->key = value;
 	
 	Value = _Node->root;
-	
+
 	While(1)
 	{
 		if(Value->key < value)                   //if value is bigger
@@ -33,7 +33,6 @@ bool insert(BST *_Node, int value)
 			if(Value->r_child == NULL)           //if r_child is empty
 			{
 				Value->r_child = NewNode;
-				return TRUE;
 			}
 			Value = Value->r_child;              //if r_child is full
 		}
@@ -43,9 +42,9 @@ bool insert(BST *_Node, int value)
 			if(Value->l_child == NULL)           //if l_child is empty
 			{
 				Value->l_child = NewNode; 
-				return TRUE;
 			}
 			Value = Value->l_child;              //if l_child is full
 		}
 	}
+	return TRUE;
 }
