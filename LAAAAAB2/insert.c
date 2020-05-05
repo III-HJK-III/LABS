@@ -22,10 +22,8 @@ bool insert_Xmutex(BST *_Tree, unsigned int value)
 	}
 	
 	if (Serch(value) == NULL)                    //what if value is already there?
-	{
 		return FALSE;
-	}
-	
+
 
 	Node *Value = _Tree->root;                   //declare Value for value
 
@@ -69,9 +67,8 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 	}
 	
 	if (Serch(value) == NULL)                    //what if value is already there?
-	{
 		return FALSE;
-	}
+
 	
 
 	Node *Value = _Tree->root;                   //declare Value for value
