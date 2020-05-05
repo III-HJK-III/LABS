@@ -14,6 +14,7 @@
 
 struct BST
 {   
+    //treeLock is used as lock for BST or to insure atomic
     pthread_mutex_t treeLock;
     Node* root;
 };
