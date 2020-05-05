@@ -90,7 +90,7 @@ void* seedling(void *arg)//create tree
 
     for (i=start ; i < end ; i++) {               
         test = insert(tree, data[i]);
-        assert(!test);
+        assert(!test); //fail to insert one node
     }
 }
 
@@ -106,6 +106,6 @@ void* lumberjack(void *arg)//destrory tree
     unsigned int test;
     for(i=start ; i < end; i++ ){
         test = insert(tree, data[i]);
-        assert(!test);
+        assert(!test); // fail to remove one node -no node matching the input key-
     }
 }
