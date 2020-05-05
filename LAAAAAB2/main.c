@@ -88,8 +88,11 @@ int main(int argc, char *argv[])
 
         //tree deleting part, felling root
         printf("Starting Deleting BST......\n")
-
-
+        for(i = 0; i < MAX_NODE, i++)
+        {
+            test = rm_f_f(Sephiroth, data[i]);
+            assert(!test);
+        }
         printf("Done Deleting BST!\n")
     }
     else
