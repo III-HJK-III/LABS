@@ -2,7 +2,6 @@
 
 #include "bst.h"
 
-
 int main(int argc, char *argv[])
 {
     if(argc != 2 || )
@@ -18,27 +17,31 @@ int main(int argc, char *argv[])
 
     int option = atoi(argv[1]);
 
-    void (*ins_f)();//insert function
+    bool (*ins_f)();//insert function
     void (*rm_f)();//remove function
 
     switch(option){
         case 0: 
             printf("BST by Multi-Thread Without Mutex\n")
-            ins_f = insert;
+            ins_f = insert_Xmutex;
             rm_f = remove_Xmutex;
             break;
 
         case 1:
             printf("BST by Multi-Thread With Coarse-grained Lock\n")
+            ins_f = insert_Xmutex;
+            rm_f = remove_Xmutex;
             break;
 
         case 2:
             printf("BST by Multi-Thread With Fine-grained Lock\n")
+            ins_f = insert_Xmutex;
+            rm_f = remove_Xmutex;
             break;
 
         case 3:
             printf("BST by Single-Thread\n");
-            ins_f = insert;
+            ins_f = insert_Xmutex;
             rm_f = remove_Xmutex;
             break;
 
@@ -57,22 +60,23 @@ int main(int argc, char *argv[])
     myArr input_key;
     init_myArr(input_key);
 
-    unsigned int cnt = 0;
-    unsigned int ran = 0;
-    srand((unsigned)time(NULL);)
+    unsigned int *data = (unsigned int*)malloc(sizeof(unsigned int)*MAX_NODE);
+    assert(data != NULL);
+    rand_gen(data, MAX_NODE);
+
+    unsigned int i = 0;
+    unsigned int test = 0;
+
     //making 'MAX_NODE' amount of nodes and insert into bst
 
     if(option == 3)
     {
         printf("Starting Insert......\n")
         printf("Creating %u nodes.......\n",MAX_NODE);
-        while(1)
+        for(i = 0; i < MAX_NODE, i++)
         {
-            ran = (((unsigned int)rand()<<15)|rand());
-            if( ins_f(&Sephiroth, ran) )
-                cnt++;
-            if(cnt >= MAX_NODE)
-                break;
+            test = ins_f(Sephiroth, data[i]);
+            if(!test) i--;
         }
         printf("Done Insert!\n")
 
@@ -91,14 +95,7 @@ int main(int argc, char *argv[])
     {
         printf("Starting Insert......\n")
         printf("Creating %u nodes.......\n",MAX_NODE);
-        while(1)
-        {
-            ran = (((unsigned int)rand()<<15)|rand());
-            if( ins_f(&Sephiroth, ran) )
-                cnt++;
-            if(cnt >= MAX_NODE)
-                break;
-        }
+
         printf("Done Insert!\n")
 
         //getting key_vals into input_keys array by inorder trav.
