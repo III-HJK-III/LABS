@@ -69,8 +69,8 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 		return FALSE;
 
 	Node *Value = _Tree->root;                          //declare Value for value
-	Node *Temp == NULL;                                 //Temp for Lock
-
+	Node *Temp = NULL;                                  //Temp for Lock
+ 
 	While(1)
 	{
 		pthread_mutex_lock(&Temp->nodeLock);            //Lock Temp
