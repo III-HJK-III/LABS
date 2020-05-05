@@ -37,7 +37,7 @@ struct myCounter
 {
     pthread_mutex_t counterLock;
     unsigned int counter;
-};
+}myCnt;
 
 /************function prototype*****************/
 
