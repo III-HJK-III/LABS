@@ -9,6 +9,7 @@
 #include <limits.h>
 
 #define MAX_NODE 1000000
+#define MAX_THREAD 20
 #define TRUE 1
 #define FALSE 0
 
@@ -38,7 +39,7 @@ struct myCounter
 {
     pthread_mutex_t counterLock;
     unsigned int counter;
-}myCnt;
+};
 
 /************function prototype*****************/
 
@@ -52,9 +53,12 @@ void rand_gen(unsigned int* arr, unsigned int max);
 void io_trav(BST &tree, myArr &arr);
 void ioP(Node* go, maArr &arr);
 
+//functions for thread run
+void* seedling(void *arg);
 
 //node searching func.
 Node* Search(BST *_Node, int value);
+void* lumberjack(void *arg)
 
 
 //node inserting func.
@@ -64,6 +68,6 @@ bool insert_FineLock(BST *_Tree, unsigned int value);
 
 
 //node removing func.
-void remove_Xmutex(BST &tree, Node &x);
-void remove_cg(BST &tree, Node &x);
-void remove_fg(BST &tree, Node &x);
+void remove_Xmutex(BST &tree, unsigned int x);
+void remove_cg(BST &tree, unsigned int x);
+void remove_fg(BST &tree, unsigned int x);
