@@ -63,4 +63,6 @@ bool insert_FineLock(BST *_Tree, unsigned int value);
 
 
 //node removing func.
-void remove_Xmutex(Node &x);
+void remove_Xmutex(BST &tree, Node &x)
+void remove_cg(BST &tree, Node &x);
+void remove_fg(BST &tree, Node &x);
