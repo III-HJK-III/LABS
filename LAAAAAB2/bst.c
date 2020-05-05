@@ -1,20 +1,19 @@
 #include "bst.h"
 
-
 //for initializing stuffs
-void init_tree(BST &tree)
+void init_tree(BST *tree)
 {
     tree -> root = NULL;
     pthread_mutex_init (&tree->treeLock, NULL);
 }
 
-void init_myArr(myArr &arr)
+void init_myArr(myArr *arr)
 {
     arr -> index = 0;
     pthread_mutex_init (&arr -> arrLock, NULL);
 }
 
-void init_node(node &nd, unsigned int inval)
+void init_node(node *nd, unsigned int inval)
 {
     nd -> key = inval;
     nd -> l_child = NULL;
@@ -22,7 +21,7 @@ void init_node(node &nd, unsigned int inval)
     pthread_mutex_init (&nd -> nodeLock, NULL);
 }
 
-void init_myCounter(myCounter& cnt)
+void init_myCounter(myCounter *cnt)
 {
     cnt -> counter = 0;
     pthread_mutex_init (&cnt -> nodeLock, NULL);
@@ -30,7 +29,7 @@ void init_myCounter(myCounter& cnt)
 
 
 //for inorder traversal
-void io_trav(BST &tree, myArr &arr)
+void io_trav(BST *tree, myArr *arr)
 {
         if(tree -> root)
     {
@@ -42,7 +41,7 @@ void io_trav(BST &tree, myArr &arr)
     return;
 }
 
-void ioP(Node* go, maArr &arr)
+void ioP(Node* go, maArr *arr)
 {
     if(go)
     {
@@ -74,5 +73,39 @@ void rand_gen(unsigned int* arr, unsigned int max)
         temp = arr[i];
         arr[i] = arr[rand_i];
         arr[rand_i] = temp;
+    }
+}
+
+//functions for thread run
+void* seedling(void *arg)//create tree
+{
+
+    thread_arg *th_arg = (thread_arg *)arg;
+    BST *tree = th_arg->tree;
+    unsigned int *data = th_arg->arr;
+    unsigned int start = th_arg->start, end = th_arg->end;
+    bool (*insert)(BST*,unsigned int) = func;
+    unsigned int i;
+    unsigned int test;
+
+    for (i=start ; i < end ; i++) {               
+        test = insert(tree, data[i]);
+        assert(!test);
+    }
+}
+
+void* lumberjack(void *arg)//destrory tree
+{
+
+    thread_arg *th_arg = (thread_arg *)arg;
+    BST *tree = th_arg->tree;
+    unsigned int *data = th_arg->arr;
+    unsigned int start = th_arg->start, end = th_arg->end;
+    void (*remove)(BST*,unsigned int) = func;
+    unsigned int i;
+    unsigned int test;
+    for(i=start ; i < end; i++ ){
+        test = insert(tree, data[i]);
+        assert(!test);
     }
 }
