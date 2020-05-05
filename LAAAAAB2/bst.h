@@ -57,7 +57,9 @@ Node* Search(BST *_Node, int value);
 
 
 //node inserting func.
-bool insert(BST *_Tree, unsigned int value);
+bool insert_Xmutex(BST *_Tree, unsigned int value);
+bool insert_CoarseLock(BST *_Tree, unsigned int value);
+bool insert_FineLock(BST *_Tree, unsigned int value);
 
 
 //node removing func.
