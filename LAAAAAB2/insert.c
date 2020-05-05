@@ -10,7 +10,7 @@ bool insert_Xmutex(BST *_Tree, unsigned int value)
 {
 	Node *NewNode = (Node *)malloc(sizeof(Node));
 
-	if(NewNode[i] == NULL)                       //Exception
+	if(NewNode == NULL)                       //Exception
 		return FALSE;        
 					
 	init_node(NewNode, value);                   //make NewNode
@@ -18,9 +18,6 @@ bool insert_Xmutex(BST *_Tree, unsigned int value)
 	if (_Tree->root == NULL)                     //if root is empty
 	{
 		_Tree->root = NewNode;
-		NewNode->l_child = NULL;
-		NewNode->r_child = NULL;
-		NewNode->key = value;
 		return TRUE;
 	}
 	
@@ -68,9 +65,6 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 	if (_Tree->root == NULL)                     //if root is empty
 	{
 		_Tree->root = NewNode;
-		NewNode->l_child = NULL;
-		NewNode->r_child = NULL;
-		NewNode->key = value;
 		return TRUE;
 	}
 	
