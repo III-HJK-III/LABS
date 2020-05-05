@@ -47,6 +47,7 @@ void init_tree(BST &tree);
 void init_myArr(myArr &arr);
 void init_node(node &nd, unsigned int inval);
 void init_myCounter(myCounter& cnt);
+void rand_gen(unsigned int* arr, unsigned int max);
 
 void io_trav(BST &tree, myArr &arr);
 void ioP(Node* go, maArr &arr);
