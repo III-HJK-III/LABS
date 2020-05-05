@@ -50,7 +50,7 @@ bool insert_Xmutex(BST *_Tree, unsigned int value)
 	return TRUE;
 }
 
-/*
+
 bool insert_CoarseLock(BST *_Tree, unsigned int value)
 {
 	Node *NewNode = (Node *)malloc(sizeof(Node));
@@ -62,9 +62,9 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 	
 	if (_Tree->root == NULL)                     //if root is empty
 	{
-//tree lock
+		pthread_mutex_lock(&_Tree->treeLock);    //Lock _Tree
 		_Tree->root = NewNode;
-//tree unlock
+		pthread_mutex_unlock(&_Tree->TreeLock);  //Unlock
 		return TRUE;
 	}
 	
@@ -74,9 +74,10 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 
 	Node *Value = _Tree->root;                   //declare Value for value
 
-//Value lock
+
 	While(1)
 	{
+		pthread_mutex_lock(&Value->nodeLock);    //Lock Value
 		if(Value->key < value)                   //if value is bigger
 		{
 			if(Value->r_child == NULL)           //if r_child is empty
@@ -94,8 +95,8 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 			}
 			Value = Value->l_child;              //if l_child is full
 		}
+		pthread_mutex_unlock(&Value->nodeLock);  //Unlock
 	}
-//Value unlock
 	return TRUE;
 }
 */
