@@ -3,7 +3,7 @@
 #include "bst.h"
 
 //remove without mutex
-void remove_Xmutex(BST &tree, unsigned int x)
+bool remove_Xmutex(BST *tree, unsigned int x)
 {
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
@@ -27,7 +27,7 @@ void remove_Xmutex(BST &tree, unsigned int x)
     }
 
     if(!p)//not found
-        return;
+        return FALSE;
 
     if(!p->l_child && !p->r_child)//no child
     {
@@ -100,12 +100,12 @@ void remove_Xmutex(BST &tree, unsigned int x)
 
     }
     free(p);
-    return;
+    return TRUE;
 }
 
 
 //remove with coarse-grained lock
-void remove_cg(BST &tree, unsigned int x)
+bool remove_cg(BST *tree, unsigned int x)
 {
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
@@ -130,7 +130,7 @@ void remove_cg(BST &tree, unsigned int x)
     }
 
     if(!p)//not found
-        return;
+        return FALSE;
 
 
 
@@ -217,12 +217,12 @@ void remove_cg(BST &tree, unsigned int x)
         p = cont;
 
     free(p);
-    return;
+    return TRUE;
 }
 
 
 //remove with fine-grained lock
-void remove_fg(BST &tree, unsigned int x)
+bool remove_fg(BST *tree, unsigned int x)
 {
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
@@ -246,7 +246,7 @@ void remove_fg(BST &tree, unsigned int x)
     }
 
     if(!p)//not found
-        return;
+        return FALSE;
 
     if(!p->l_child && !p->r_child)//no child
     {
@@ -377,5 +377,5 @@ void remove_fg(BST &tree, unsigned int x)
 
     }
     free(p);
-    return;
+    return TRUE;
 }

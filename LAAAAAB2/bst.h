@@ -41,14 +41,27 @@ struct myCounter
     unsigned int counter;
 };
 
+struct thread_arg{
+    pthread_t thread;
+    BST *tree;
+    unsigned int *arr;
+    unsigned int start;
+    unsigned int end;
+    bool (*func)(BST*,unsigned int);
+};
+
 /************function prototype*****************/
 
 //basic func. for bst usage
-void init_tree(BST &tree);
-void init_myArr(myArr &arr);
-void init_node(node &nd, unsigned int inval);
-void init_myCounter(myCounter& cnt);
+void init_tree(BST *tree);
+void init_myArr(myArr *arr);
+void init_node(node *nd, unsigned int inval);
+void init_myCounter(myCounter *cnt);
 void rand_gen(unsigned int* arr, unsigned int max);
+
+//functions for thread run
+void* seedling(void *arg);//create tree
+void* lumberjack(void *arg);//destrory tree
 
 void io_trav(BST &tree, myArr &arr);
 void ioP(Node* go, maArr &arr);
@@ -58,7 +71,7 @@ void* seedling(void *arg);
 
 //node searching func.
 Node* Search(BST *_Node, int value);
-void* lumberjack(void *arg)
+void* lumberjack(void *arg);
 
 
 //node inserting func.
@@ -68,6 +81,6 @@ bool insert_FineLock(BST *_Tree, unsigned int value);
 
 
 //node removing func.
-void remove_Xmutex(BST &tree, unsigned int x);
-void remove_cg(BST &tree, unsigned int x);
-void remove_fg(BST &tree, unsigned int x);
+bool remove_Xmutex(BST *tree, unsigned int x);
+bool remove_cg(BST *tree, unsigned int x);
+bool remove_fg(BST *tree, unsigned int x);
