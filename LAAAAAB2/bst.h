@@ -41,6 +41,7 @@ struct myCounter
     unsigned int counter;
 };
 
+//strct arg for thread / got from LAB2 example
 struct thread_arg{
     pthread_t thread;
     BST *tree;
@@ -63,6 +64,7 @@ void rand_gen(unsigned int* arr, unsigned int max);
 void* seedling(void *arg);//create tree
 void* lumberjack(void *arg);//destrory tree
 
+//for inorder trav.
 void io_trav(BST &tree, myArr &arr);
 void ioP(Node* go, maArr &arr);
 
