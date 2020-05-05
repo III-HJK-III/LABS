@@ -5,13 +5,13 @@
 void init_tree(BST &tree)
 {
     tree -> root = NULL;
-    pthread_mutex_init (tree->treeLock, NULL);
+    pthread_mutex_init (&tree->treeLock, NULL);
 }
 
 void init_myArr(myArr &arr)
 {
     arr -> index = 0;
-    pthread_mutex_init (arr -> arrLock, NULL);
+    pthread_mutex_init (&arr -> arrLock, NULL);
 }
 
 void init_node(node &nd, unsigned int inval)
@@ -19,13 +19,13 @@ void init_node(node &nd, unsigned int inval)
     nd -> key = inval;
     nd -> l_child = NULL;
     nd -> r_child = NULL;
-    pthread_mutex_init (nd -> nodeLock, NULL);
+    pthread_mutex_init (&nd -> nodeLock, NULL);
 }
 
 void init_myCounter(myCounter& cnt)
 {
     cnt -> counter = 0;
-    pthread_mutex_init (cnt -> nodeLock, NULL);
+    pthread_mutex_init (&cnt -> nodeLock, NULL);
 }
 
 
