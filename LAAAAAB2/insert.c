@@ -75,13 +75,13 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
  
 	While(1)
 	{
-		pthread_mutex_lock(&Temp->nodeLock);            //Lock Temp
+		pthread_mutex_lock(&Value->nodeLock);           //Lock Tree
 		if(Value->key < value)                          //if value is bigger
 		{
 			if(Value->r_child == NULL)                  //if r_child is empty
 			{
 				Value->r_child = NewNode;
-				pthread_mutex_unlock(&Temp->nodeLock);  //Unlock
+				pthread_mutex_unlock(&Value->nodeLock); //Unlock
 				break;
 			}
 			Temp = Value->r_child;                      //if r_child is full
@@ -92,11 +92,12 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 			if(Value->l_child == NULL)                  //if l_child is empty
 			{
 				Value->l_child = NewNode; 
-				pthread_mutex_unlock(&Temp->nodeLock);  //Unlock
+				pthread_mutex_unlock(&Value->nodeLock); //Unlock
 				break;
 			}
 			Temp = Value->l_child;                      //if l_child is full
 		}
+		pthread_mutex_unlock(&Value->nodeLock);         //Unlock
 		Value = Temp;
 	}
 	return TRUE;
