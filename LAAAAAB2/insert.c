@@ -68,9 +68,9 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 	if (Serch(value) == NULL)                    //what if value is already there?
 		return FALSE;
 
-	pthread_mutex_lock(&_Tree->treeLock);        //Lock _Tree
+	pthread_mutex_lock(&Value->nodeLock);        //Lock Value
 	Node *Value = _Tree->root;                   //declare Value for value
-	pthread_mutex_unlock(&_Tree->TreeLock);      //Unlock
+	pthread_mutex_unlock(&Value->nodeLock);      //Unlock
 
 
 	While(1)
@@ -119,9 +119,9 @@ bool insert_FineLock(BST *_Tree, unsigned int value)
 	if (Serch(value) == NULL)                    //what if value is already there?
 		return FALSE;
 
-	pthread_mutex_lock(&_Tree->treeLock);        //Lock _Tree
+	pthread_mutex_lock(&Value->nodeLock);        //Lock Value
 	Node *Value = _Tree->root;                   //declare Value for value
-	pthread_mutex_unlock(&_Tree->TreeLock);  //Unlock
+	pthread_mutex_unlock(&Value->nodeLock);  //Unlock
 
 
 	While(1)
