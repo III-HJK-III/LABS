@@ -3,9 +3,6 @@
 /*****************************************************/ 
 #include "bst.h"
 
-pthread_mutex_t mutex mutex_lock;
-
-
 bool insert_Xmutex(BST *_Tree, unsigned int value)
 {
 	Node *NewNode = (Node *)malloc(sizeof(Node));
