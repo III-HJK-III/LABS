@@ -1,5 +1,5 @@
 /*****************************************************/
-/**********Made by ¹Ú°æ³ç from DKU, 32161553**********/
+/**********Made by ï¿½Ú°ï¿½ï¿½ from DKU, 32161553**********/
 /*****************************************************/ 
 #include "bst.h"
 
@@ -55,24 +55,26 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 {
 	Node *NewNode = (Node *)malloc(sizeof(Node));
 
-	if(NewNode[i] == NULL)                       //Exception
+	if(NewNode == NULL)                       //Exception
 		return FALSE;        
-			
+					
 	init_node(NewNode, value);                   //make NewNode
 	
 	if (_Tree->root == NULL)                     //if root is empty
 	{
+//tree lock
 		_Tree->root = NewNode;
+//tree unlock
 		return TRUE;
 	}
 	
 	if (Serch(value) == NULL)                    //what if value is already there?
 		return FALSE;
 
-	
 
 	Node *Value = _Tree->root;                   //declare Value for value
 
+//Value lock
 	While(1)
 	{
 		if(Value->key < value)                   //if value is bigger
@@ -93,6 +95,7 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 			Value = Value->l_child;              //if l_child is full
 		}
 	}
+//Value unlock
 	return TRUE;
 }
 */
