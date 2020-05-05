@@ -3,7 +3,7 @@
 #include "bst.h"
 
 //remove without mutex
-void remove_Xmutex(BST &tree, Node &x)
+void remove_Xmutex(BST &tree, unsigned int x)
 {
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
@@ -11,10 +11,10 @@ void remove_Xmutex(BST &tree, Node &x)
     while(p)
     {
         //find place for x
-        if(p->key == x.key)
+        if(p->key == x)
             break; 
 
-        if(p->key < x.key)
+        if(p->key < x)
         {
             q = p;
             p = p->r_child;
@@ -105,7 +105,7 @@ void remove_Xmutex(BST &tree, Node &x)
 
 
 //remove with coarse-grained lock
-void remove_cg(BST &tree, Node &x)
+void remove_cg(BST &tree, unsigned int x)
 {
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
@@ -114,10 +114,10 @@ void remove_cg(BST &tree, Node &x)
     while(p)
     {
         //find place for x
-        if(p->key == x.key)
+        if(p->key == x)
             break; 
 
-        if(p->key < x.key)
+        if(p->key < x)
         {
             q = p;
             p = p->r_child;
@@ -222,7 +222,7 @@ void remove_cg(BST &tree, Node &x)
 
 
 //remove with fine-grained lock
-void remove_fg(BST &tree, Node &x)
+void remove_fg(BST &tree, unsigned int x)
 {
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
@@ -230,10 +230,10 @@ void remove_fg(BST &tree, Node &x)
     while(p)
     {
         //find place for x
-        if(p->key == x.key)
+        if(p->key == x)
             break; 
 
-        if(p->key < x.key)
+        if(p->key < x)
         {
             q = p;
             p = p->r_child;
