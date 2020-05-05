@@ -22,6 +22,11 @@ void init_node(node &nd, unsigned int inval)
     pthread_mutex_init (nd -> nodeLock, NULL);
 }
 
+void init_myCounter(myCounter& cnt)
+{
+    cnt -> counter = 0;
+    pthread_mutex_init (cnt -> nodeLock, NULL);
+}
 
 
 //for inorder traversal
@@ -47,7 +52,7 @@ void ioP(Node* go, maArr &arr)
         arr->index++;
         arr->keyvals[index-1] = go->key;
         pthread_mutex_unlock(arr->arrLock);
-        
+
         ioP(go->r_child, arr);
     }
 }

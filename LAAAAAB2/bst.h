@@ -33,6 +33,12 @@ struct myArr
     unsigned int index;//last val's next index
 };
 
+struct myCounter
+{
+    pthread_mutex_t counterLock;
+    unsigned int counter;
+};
+
 /************function prototype*****************/
 
 //basic func. for bst usage
