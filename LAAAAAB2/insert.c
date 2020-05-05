@@ -19,7 +19,10 @@ bool insert_Xmutex(BST *_Tree, unsigned int value)
 	}
 	
 	if (Search(value) == NULL)                          //what if value is already there?
+	{
+		Free(NewNode);
 		return FALSE;
+	}
 
 
 	Node *Value = _Tree->root;                         //declare Value for value
@@ -68,7 +71,10 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 	}
 	
 	if (Search(value) == NULL)                           //what if value is already there?
+	{
+		Free(NewNode);
 		return FALSE;
+	}
 
 	Node *Value = _Tree->root;                          //declare Value for value
 	Node *Temp = NULL;                                  //Temp for Lock
@@ -122,7 +128,10 @@ bool insert_FineLock(BST *_Tree, unsigned int value)
 	}
 	
 	if (Search(value) == NULL)                            //what if value is already there?
+	{
+		Free(NewNode);
 		return FALSE;
+	}
 
 	Node *Value = _Tree->root;                           //declare Value for value
 
