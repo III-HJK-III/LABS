@@ -18,7 +18,7 @@ bool insert_Xmutex(BST *_Tree, unsigned int value)
 		return TRUE;
 	}
 	
-	if (Serch(value) == NULL)                          //what if value is already there?
+	if (Search(value) == NULL)                          //what if value is already there?
 		return FALSE;
 
 
@@ -31,6 +31,7 @@ bool insert_Xmutex(BST *_Tree, unsigned int value)
 			if(Value->r_child == NULL)                 //if r_child is empty
 			{
 				Value->r_child = NewNode;
+				break;
 			}
 			Value = Value->r_child;                    //if r_child is full
 		}
@@ -40,6 +41,7 @@ bool insert_Xmutex(BST *_Tree, unsigned int value)
 			if(Value->l_child == NULL)                 //if l_child is empty
 			{
 				Value->l_child = NewNode; 
+				break;
 			}
 			Value = Value->l_child;                    //if l_child is full
 		}
@@ -65,7 +67,7 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 		return TRUE;
 	}
 	
-	if (Serch(value) == NULL)                           //what if value is already there?
+	if (Search(value) == NULL)                           //what if value is already there?
 		return FALSE;
 
 	Node *Value = _Tree->root;                          //declare Value for value
@@ -79,6 +81,8 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 			if(Value->r_child == NULL)                  //if r_child is empty
 			{
 				Value->r_child = NewNode;
+				pthread_mutex_unlock(&Temp->nodeLock);  //Unlock
+				break;
 			}
 			Temp = Value->r_child;                      //if r_child is full
 		}
@@ -88,10 +92,11 @@ bool insert_CoarseLock(BST *_Tree, unsigned int value)
 			if(Value->l_child == NULL)                  //if l_child is empty
 			{
 				Value->l_child = NewNode; 
+				pthread_mutex_unlock(&Temp->nodeLock);  //Unlock
+				break;
 			}
-			Value = Value->l_child;                     //if l_child is full
+			Temp = Value->l_child;                      //if l_child is full
 		}
-		pthread_mutex_unlock(&Temp->nodeLock);          //Unlock
 		Value = Temp;
 	}
 	return TRUE;
@@ -115,7 +120,7 @@ bool insert_FineLock(BST *_Tree, unsigned int value)
 		return TRUE;
 	}
 	
-	if (Serch(value) == NULL)                            //what if value is already there?
+	if (Search(value) == NULL)                            //what if value is already there?
 		return FALSE;
 
 	Node *Value = _Tree->root;                           //declare Value for value
@@ -129,6 +134,7 @@ bool insert_FineLock(BST *_Tree, unsigned int value)
 				pthread_mutex_lock(&Value->nodeLock);    //Lock Value
 				Value->r_child = NewNode;
 				pthread_mutex_unlock(&Value->nodeLock);  //Unlock
+				break;
 			}
 			Value = Value->r_child;                      //if r_child is full
 		}
@@ -140,6 +146,7 @@ bool insert_FineLock(BST *_Tree, unsigned int value)
 				pthread_mutex_lock(&Value->nodeLock);    //Lock Value
 				Value->l_child = NewNode; 
 				pthread_mutex_unlock(&Value->nodeLock);  //Unlock
+				break;
 			}
 			Value = Value->l_child;                      //if l_child is full
 		}
