@@ -142,7 +142,7 @@ int remove_cg(BST *tree, unsigned int x)
         }
     }
     
-    if(!p || !q)
+    if(!p)
         return FALSE;
 
     pthread_mutex_lock(&q->nodeLock);
