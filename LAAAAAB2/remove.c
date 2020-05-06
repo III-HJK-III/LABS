@@ -193,6 +193,7 @@ int remove_cg(BST *tree, unsigned int x)
             p->key = temp->key;
             p_temp->r_child = temp->l_child;
         }
+        printf("EE OUT EE!\n");
         pthread_mutex_unlock(&p_temp->nodeLock);
         pthread_mutex_unlock(&p->nodeLock);
         pthread_mutex_unlock(&tree->treeLock);
