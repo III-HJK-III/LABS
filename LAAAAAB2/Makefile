@@ -9,8 +9,7 @@
 #
 
 CC = gcc
-INC = -I${CURDIR}/include/
-CFLAGS = -g $(INC)
+CFLAGS = -g
 LDFLAGS = -lpthread
 STD = -std=$(STANDARD)
 STANDARD = c11

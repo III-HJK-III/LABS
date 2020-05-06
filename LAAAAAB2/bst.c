@@ -1,5 +1,5 @@
 /* 32160320@dankook.ac.kr 권혁준 */
-#include "include/bst.h"
+#include "bst.h"
 
 //for initializing stuffs
 void init_tree(BST *tree)
