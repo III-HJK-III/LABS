@@ -10,7 +10,6 @@
 
 CC = gcc
 CFLAGS = -g
-LDFLAGS = -lpthread
 STD = -std=$(STANDARD)
 STANDARD = c11
 
@@ -27,7 +26,7 @@ TARGET_LAB2 = lab2_bst
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 $(TARGET_LAB2) : $(OBJS_LAB2)
-	$(CC) -o $(TARGET_LAB2) $(OBJS_LAB2) $(LDFLAGS) $(STD)
+	$(CC) -o $(TARGET_LAB2) $(OBJS_LAB2) $(STD)
 
 all : $(TARGET_LAB2)
 
