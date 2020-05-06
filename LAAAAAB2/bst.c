@@ -28,7 +28,7 @@ void io_trav(BST *tree)
         return;
     }
     counter = 0;
-    ioP(tree -> roots);
+    ioP(tree -> root);
     return;
 }
 
