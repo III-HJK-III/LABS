@@ -7,17 +7,11 @@ int insert_Xmutex(BST *_Tree, unsigned int value)
 {
 	Node *NewNode = (Node *)malloc(sizeof(Node));
 
-
-
 	if(NewNode == NULL)                                //Exception
 	{
-		printf("FAIL to insert new noed!!!\n");
 		return FALSE;
 	}        
-					
 
-
-					
 	init_node(NewNode, value);                         //make NewNode
 	
 	if (_Tree->root == NULL)                           //if root is empty
