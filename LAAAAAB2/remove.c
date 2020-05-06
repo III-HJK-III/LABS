@@ -43,7 +43,7 @@ int remove_Xmutex(BST *tree, unsigned int x)
             p->r_child = NULL;
         }
     }
-    else if(p->l_child && p->r_child)
+    if(p->l_child && p->r_child)
     {
         Node* temp = p->l_child;
         Node* p_temp = p;//parent of temp;
@@ -159,7 +159,7 @@ int remove_cg(BST *tree, unsigned int x)
             p->r_child = NULL;
         }
     }
-    else if(p->l_child && p->r_child)
+    if(p->l_child && p->r_child)
     {
         Node* temp = p->l_child;
         Node* p_temp = p;//parent of temp;
@@ -264,7 +264,6 @@ int remove_fg(BST *tree, unsigned int x)
         if(!p->l_child && !p->r_child)//no child
         {
             pthread_mutex_lock(&tree->treeLock);
-            printf("WA! 1 \n");
             tree -> root = NULL;
             pthread_mutex_unlock(&tree->treeLock);
         }
@@ -290,7 +289,7 @@ int remove_fg(BST *tree, unsigned int x)
             pthread_mutex_unlock(&tree->treeLock);
         }
     }
-    else if(p->l_child && p->r_child)
+    if(p->l_child && p->r_child)
     {
         Node* temp = p->l_child;
         Node* p_temp = p;//parent of temp;
