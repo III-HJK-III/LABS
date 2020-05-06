@@ -9,7 +9,7 @@
 #include <limits.h>
 #include "bst.h"
 
-#define MAX_NODE 5000000
+#define MAX_NODE 100000
 #define MAX_THREAD 100
 #define TRUE 1
 #define FALSE 0
