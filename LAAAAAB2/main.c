@@ -139,6 +139,7 @@ int main(int argc, char *argv[])
         //tree deleting part
         printf("Starting Deleting BST......\n");
         for(i=0; i < thread_no ; i++){
+            printf("Go %u!!!\n",i);
             thread_arg *th_arg = &threads[i];
             th_arg->tree = &Sephiroth;
             th_arg->arr = data;
@@ -148,7 +149,10 @@ int main(int argc, char *argv[])
             pthread_create(&threads[i].thread,NULL,lumberjack,(void*)th_arg);
         }
         for (i = 0; i < thread_no; i++)
+        {
+            printf("Come %u!!!\n",i);
             pthread_join(threads[i].thread, NULL);
+        }
         printf("Done Deleting BST!\n");
     }
 
