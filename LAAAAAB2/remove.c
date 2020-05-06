@@ -120,7 +120,7 @@ int remove_cg(BST *tree, unsigned int x)
     Node* q = NULL;//p's parent
     Node* cont = NULL;//Used for lock
 
-    if(!p)
+    if(p==NULL)
     {
         printf("Empty tree!!!\n");
         return TRUE;
@@ -134,13 +134,17 @@ int remove_cg(BST *tree, unsigned int x)
 
         if(p->key < x)
         {
+            pthread_mutex_lock(&tree->treeLock);
             q = p;
             p = p->r_child;
+            pthread_mutex_unlock(&tree->treeLock);
         }
         else
         {
+            pthread_mutex_lock(&tree->treeLock);
             q = p;
             p = p->l_child;
+            pthread_mutex_unlock(&tree->treeLock);
         }
     }
 printf("AAAAAAAA\n");
