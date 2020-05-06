@@ -54,8 +54,8 @@ void* seedling(void *arg);//create tree
 void* lumberjack(void *arg);//destrory tree
 
 //for inorder trav.
-void io_trav(BST *tree, unsigned int *cnt);
-void ioP(Node* go, unsigned int *cnt);
+void io_trav(BST *tree);
+void ioP(Node* go);
 
 //functions for thread run
 void* seedling(void *arg);

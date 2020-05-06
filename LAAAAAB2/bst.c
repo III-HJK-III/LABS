@@ -1,6 +1,8 @@
 /* 32160320@dankook.ac.kr 권혁준 */
 #include "bst.h"
 
+extern unsigned int counter;//for inorder trav.
+
 //for initializing stuffs
 void init_tree(BST *tree)
 {
@@ -18,26 +20,24 @@ void init_node(Node *nd, unsigned int inval)
 
 
 //for inorder traversal
-void io_trav(BST *tree, unsigned int *cnt)
+void io_trav(BST *tree)
 {
-    *cnt = 0;
         if(tree -> root == NULL)
     {
         printf("Empty!!\n");
         return;
     }
-    
+    counter = 0;
     ioP(tree -> root, cnt);
-    *cnt++;
     return;
 }
 
-void ioP(Node *go, unsigned int *cnt)
+void ioP(Node *go)
 {
     if(go)
     {
         ioP(go->l_child, cnt);
-        *cnt++;
+        counter++;
         ioP(go->r_child, cnt);
     }
 }
