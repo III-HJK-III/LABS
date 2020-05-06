@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
 
         //getting key_vals into input_keys array by inorder trav. instead of printing it out
         printf("Starting inorder traversal\n");
-        io_trav(Sephiroth, counter, MAX_NODE);
+        io_trav(&Sephiroth, &counter);
         printf("Done inorder traversal\n");
         printf("Been travel through %d nodes!",counter);
 
@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
 
         //getting key_vals into input_keys array by inorder trav. instead of printing it out
         printf("Starting inorder traversal\n");
-        io_trav(Sephiroth, counter, MAX_NODE);
+        io_trav(&Sephiroth, &counter);
         printf("Done inorder traversal\n");
         printf("Been travel through %d nodes!",counter);
 
