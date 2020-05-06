@@ -145,8 +145,11 @@ int remove_cg(BST *tree, unsigned int x)
         else break;
     }
 
-    if(!p)//not found
-        return FALSE;
+        if(!q)//dbg
+        printf("whatthe\n");
+
+        if(x==p->key)//dbg
+        printf("SAME\n");
         
     if(!q)//dbg
         printf("whatthe\n");
@@ -278,6 +281,14 @@ int remove_fg(BST *tree, unsigned int x)
             p = p->l_child;
         }
     }
+
+
+        if(!q)//dbg
+        printf("whatthe\n");
+
+        if(x==p->key)//dbg
+        printf("SAME\n");
+
 
     if(!p)//not found
         return FALSE;
