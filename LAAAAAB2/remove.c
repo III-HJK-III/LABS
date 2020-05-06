@@ -111,6 +111,7 @@ int remove_cg(BST *tree, unsigned int x)
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
 
+    pthread_mutex_lock(&tree->treeLock);
     while(p)
     {
         if(x == p->key)
@@ -132,7 +133,7 @@ int remove_cg(BST *tree, unsigned int x)
 
     pthread_mutex_lock(&q->nodeLock);
     pthread_mutex_lock(&p->nodeLock);
-    pthread_mutex_lock(&tree->treeLock);
+    
 
     Node* cont = NULL;//Used for lock
     if(!p->l_child && !p->r_child)//no child
