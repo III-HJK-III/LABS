@@ -19,7 +19,7 @@ int remove_Xmutex(BST *tree, unsigned int x)
         if(p->key == x)
             break; 
 
-        if(p->key < x)
+        else if(p->key < x)
         {
             q = p;
             p = p->r_child;
