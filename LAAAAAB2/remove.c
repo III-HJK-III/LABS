@@ -122,7 +122,6 @@ int remove_cg(BST *tree, unsigned int x)
     Node* q = NULL;//p's parent
     Node* cont = NULL;
 
-    pthread_mutex_lock(&tree->treeLock);
     while(p)
     {
         if(x == p->key)
@@ -141,10 +140,9 @@ int remove_cg(BST *tree, unsigned int x)
     
     if(!p)
     {
-        pthread_mutex_unlock(&tree->treeLock);
         return FALSE;
     }
-
+    pthread_mutex_lock(&tree->treeLock);
     pthread_mutex_lock(&p->nodeLock);
     if(p == tree->root)
     {
@@ -255,17 +253,13 @@ int remove_fg(BST *tree, unsigned int x)
             break;
         else if(p->key > x)
         {
-            pthread_mutex_lock(&tree->treeLock);
             q = p;
             p = p->l_child;
-            pthread_mutex_unlock(&tree->treeLock);
         }
         else
         {
-            pthread_mutex_lock(&tree->treeLock);
             q = p;
             p = p->r_child;
-            pthread_mutex_unlock(&tree->treeLock);
         }
     }
     
