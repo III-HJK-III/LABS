@@ -62,7 +62,6 @@ void* seedling(void *arg);
 
 //node searching func.
 Node* Search(BST *_Node, unsigned int value);
-void* lumberjack(void *arg);
 
 //node inserting func.
 int insert_Xmutex(BST *_Tree, unsigned int value);

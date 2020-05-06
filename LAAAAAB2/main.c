@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
         case 1:
             printf("BST by Multi-Thread With Coarse-grained Lock\n");
             printf("Using %d threads...\n",thread_no);
-            ins_f = insert_CoarseLcok;
+            ins_f = insert_CoarseLock;
             rm_f = remove_cg;
             break;
 
@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
         }
 
     BST Sephiroth;//our main bst. start point
-    init_tree(Sephiroth);
+    init_tree(&Sephiroth);
     unsigned int counter = 0;
 
     unsigned int *data = (unsigned int*)malloc(sizeof(unsigned int)*MAX_NODE);
@@ -87,9 +87,9 @@ int main(int argc, char *argv[])
 
         printf("Starting Insert......\n");
         printf("Creating %u nodes.......\n",MAX_NODE);
-        for(i = 0; i < MAX_NODE, i++)
+        for(i = 0; i < MAX_NODE; i++)
         {
-            test = ins_f(Sephiroth, data[i]);
+            test = ins_f(&Sephiroth, data[i]);
             assert(!test);
         }
         printf("Done Insert!\n");
@@ -102,9 +102,9 @@ int main(int argc, char *argv[])
 
         //tree deleting part, felling root
         printf("Starting Deleting BST......\n");
-        for(i = 0; i < MAX_NODE, i++)
+        for(i = 0; i < MAX_NODE; i++)
         {
-            test = rm_f(Sephiroth, data[i]);
+            test = rm_f(&Sephiroth, data[i]);
             assert(!test);
         }
         printf("Done Deleting BST!\n");
