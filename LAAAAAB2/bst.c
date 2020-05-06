@@ -38,6 +38,7 @@ void ioP(Node *go)
     {
         ioP(go->l_child);
         counter++;
+        //printf("ME %u\n",go->key);
         ioP(go->r_child);
     }
 }
@@ -91,6 +92,7 @@ void* lumberjack(void *arg)//destrory tree
     unsigned int i;
     unsigned int test;
     for(i=start ; i < end; i++ ){
+        printf("%u !!!\n",i);
         test = remove(tree, data[i]);
         assert(test); // fail to remove one node -no node matching the input key-
     }
