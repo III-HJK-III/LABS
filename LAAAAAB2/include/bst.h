@@ -14,15 +14,15 @@
 #define TRUE 1
 #define FALSE 0
 
-typedef struct Node
+typedef struct _Node
 {
     pthread_mutex_t nodeLock;
     unsigned int key;
-    Node* l_child;
-    Node* r_child;
+    struct Node* l_child;
+    struct Node* r_child;
 } Node;
 
-typedef struct BST
+typedef struct _BST
 {   
     //treeLock is used to insure atomicity(acquisition) and tree lock
     pthread_mutex_t treeLock;
@@ -30,7 +30,7 @@ typedef struct BST
 } BST;
 
 //strct arg for thread / got from LAB2 example
-typedef struct thread_arg{
+typedef struct _thread_arg{
     pthread_t thread;
     BST *tree;
     unsigned int *arr;
