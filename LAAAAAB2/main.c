@@ -72,9 +72,7 @@ int main(int argc, char *argv[])
 
     BST Sephiroth;//our main bst. start point
     init_tree(Sephiroth);
-    myArr input_key;
-    init_myArr(input_key);
-    myCounter myCnt;
+    unsigned int counter = 0;
 
     unsigned int *data = (unsigned int*)malloc(sizeof(unsigned int)*MAX_NODE);
     assert(data != NULL);
@@ -87,28 +85,29 @@ int main(int argc, char *argv[])
         unsigned int i = 0;
         unsigned int test = 0;
 
-        printf("Starting Insert......\n")
+        printf("Starting Insert......\n");
         printf("Creating %u nodes.......\n",MAX_NODE);
         for(i = 0; i < MAX_NODE, i++)
         {
             test = ins_f(Sephiroth, data[i]);
             assert(!test);
         }
-        printf("Done Insert!\n")
+        printf("Done Insert!\n");
 
         //getting key_vals into input_keys array by inorder trav. instead of printing it out
-        printf("Starting inorder traversal\n")
-        io_trav(Sephiroth, input_keys, MAX_NODE);
-        printf("Done inorder traversal\n")
+        printf("Starting inorder traversal\n");
+        io_trav(Sephiroth, counter, MAX_NODE);
+        printf("Done inorder traversal\n");
+        printf("Been travel through %d nodes!",counter);
 
         //tree deleting part, felling root
-        printf("Starting Deleting BST......\n")
+        printf("Starting Deleting BST......\n");
         for(i = 0; i < MAX_NODE, i++)
         {
             test = rm_f(Sephiroth, data[i]);
             assert(!test);
         }
-        printf("Done Deleting BST!\n")
+        printf("Done Deleting BST!\n");
     }
     else
     {
@@ -117,7 +116,7 @@ int main(int argc, char *argv[])
         if(!threads) 
             assert(threads);
 
-        printf("Starting Insert......\n")
+        printf("Starting Insert......\n");
         printf("Creating %u nodes.......\n",MAX_NODE);
         for(i=0; i < thread_no ; i++){
             thread_arg *th_arg = &threads[i];
@@ -131,15 +130,16 @@ int main(int argc, char *argv[])
         }
         for (i = 0; i < thread_no; i++)
             pthread_join(threads[i].thread, NULL);
-        printf("Done Insert!\n")
+        printf("Done Insert!\n");
 
         //getting key_vals into input_keys array by inorder trav. instead of printing it out
-        printf("Starting inorder traversal\n")
-        io_trav(Sephiroth, input_keys, MAX_NODE);
-        printf("Done inorder traversal\n")
+        printf("Starting inorder traversal\n");
+        io_trav(Sephiroth, counter, MAX_NODE);
+        printf("Done inorder traversal\n");
+        printf("Been travel through %d nodes!",counter);
 
         //tree deleting part, felling root
-        printf("Starting Deleting BST......\n")
+        printf("Starting Deleting BST......\n");
         for(i=0; i < thread_no ; i++){
             thread_arg *th_arg = &threads[i];
             th_arg->tree = &Sephiroth;
@@ -152,7 +152,7 @@ int main(int argc, char *argv[])
         }
         for (i = 0; i < thread_no; i++)
             pthread_join(threads[i].thread, NULL);
-        printf("Done Deleting BST!\n")
+        printf("Done Deleting BST!\n");
     }
 
 
