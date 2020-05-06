@@ -130,6 +130,7 @@ int remove_cg(BST *tree, unsigned int x)
     pthread_mutex_lock(&p->nodeLock);
     printf("AAAAAAAA\n");
     pthread_mutex_lock(&q->nodeLock);
+    printf("BBBBBBBBBB\n");
 
     while(p)
     {
