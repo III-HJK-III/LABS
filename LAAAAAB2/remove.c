@@ -264,7 +264,7 @@ int remove_fg(BST *tree, unsigned int x)
         if(!p->l_child && !p->r_child)//no child
         {
             pthread_mutex_lock(&tree->treeLock);
-            printf("WA! 1 n");
+            printf("WA! 1 \n");
             tree -> root = NULL;
             pthread_mutex_unlock(&tree->treeLock);
         }
@@ -273,7 +273,7 @@ int remove_fg(BST *tree, unsigned int x)
         {
             pthread_mutex_lock(&tree->treeLock);
             pthread_mutex_lock(&p->nodeLock);
-            printf("WA! 2 n");
+            printf("WA! 2 \n");
             tree -> root = p->l_child;
             p->l_child = NULL;
             pthread_mutex_unlock(&p->nodeLock);
@@ -283,7 +283,7 @@ int remove_fg(BST *tree, unsigned int x)
         {
             pthread_mutex_lock(&tree->treeLock);
             pthread_mutex_lock(&p->nodeLock);
-            printf("WA! 3 n");
+            printf("WA! 3 \n");
             tree -> root = p->r_child;
             p->r_child = NULL;
             pthread_mutex_unlock(&p->nodeLock);
@@ -306,7 +306,7 @@ int remove_fg(BST *tree, unsigned int x)
         {
             pthread_mutex_lock(&tree->treeLock);
             pthread_mutex_lock(&p->nodeLock);
-            printf("WA! 4 n");
+            printf("WA! 4 \n");
             p->key = temp->key;
             p->l_child = temp->l_child;
             pthread_mutex_unlock(&p->nodeLock);
@@ -317,7 +317,7 @@ int remove_fg(BST *tree, unsigned int x)
             pthread_mutex_lock(&tree->treeLock);
             pthread_mutex_lock(&p->nodeLock);
             pthread_mutex_lock(&p_temp->nodeLock);
-            printf("WA! 5 n");
+            printf("WA! 5 \n");
             p->key = temp->key;
             p_temp->r_child = NULL;
             pthread_mutex_unlock(&p_temp->nodeLock);
@@ -329,7 +329,7 @@ int remove_fg(BST *tree, unsigned int x)
             pthread_mutex_lock(&tree->treeLock);
             pthread_mutex_lock(&p->nodeLock);
             pthread_mutex_lock(&p_temp->nodeLock);
-            printf("WA! 6 n");
+            printf("WA! 6 \n");
             p->key = temp->key;
             p_temp->r_child = temp->l_child;
             pthread_mutex_unlock(&p_temp->nodeLock);
@@ -346,7 +346,7 @@ int remove_fg(BST *tree, unsigned int x)
             {
                 pthread_mutex_lock(&tree->treeLock);
                 pthread_mutex_lock(&q->nodeLock);
-                printf("WA! 8 n");
+                printf("WA! 8 \n");
                 q->l_child = NULL;
                 pthread_mutex_unlock(&q->nodeLock);
                 pthread_mutex_unlock(&tree->treeLock);
@@ -355,7 +355,7 @@ int remove_fg(BST *tree, unsigned int x)
             {
                 pthread_mutex_lock(&tree->treeLock);
                 pthread_mutex_lock(&q->nodeLock);
-                printf("WA! 9 n");
+                printf("WA! 9 \n");
                 q->r_child = NULL;
                 pthread_mutex_unlock(&q->nodeLock);
                 pthread_mutex_unlock(&tree->treeLock);
@@ -368,7 +368,7 @@ int remove_fg(BST *tree, unsigned int x)
                 pthread_mutex_lock(&tree->treeLock);
                 pthread_mutex_lock(&q->nodeLock);
                 pthread_mutex_lock(&p->nodeLock);
-                printf("WA! 10 n");
+                printf("WA! 10 \n");
                 q->l_child = p->l_child;
                 p->l_child = NULL;
                 pthread_mutex_unlock(&p->nodeLock);
@@ -380,7 +380,7 @@ int remove_fg(BST *tree, unsigned int x)
                 pthread_mutex_lock(&tree->treeLock);
                 pthread_mutex_lock(&q->nodeLock);
                 pthread_mutex_lock(&p->nodeLock);
-                printf("WA! 11 n");
+                printf("WA! 11 \n");
                 q->r_child = p->l_child;
                 p->l_child = NULL;
                 pthread_mutex_unlock(&p->nodeLock);
@@ -395,7 +395,7 @@ int remove_fg(BST *tree, unsigned int x)
                 pthread_mutex_lock(&tree->treeLock);
                 pthread_mutex_lock(&q->nodeLock);
                 pthread_mutex_lock(&p->nodeLock);
-                printf("WA! 12 n");
+                printf("WA! 12 \n");
                 q->l_child = p->r_child;
                 p->r_child = NULL;
                 pthread_mutex_unlock(&p->nodeLock);
@@ -407,7 +407,7 @@ int remove_fg(BST *tree, unsigned int x)
                 pthread_mutex_lock(&tree->treeLock);
                 pthread_mutex_lock(&q->nodeLock);
                 pthread_mutex_lock(&p->nodeLock);
-                printf("WA! 13 n");
+                printf("WA! 13 \n");
                 q->r_child = p->r_child;
                 p->r_child = NULL;
                 pthread_mutex_unlock(&p->nodeLock);
