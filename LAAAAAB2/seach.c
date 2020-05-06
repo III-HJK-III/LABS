@@ -6,7 +6,7 @@ Node* Search(BST *_Node, unsigned int value)
 	
 	if(Value == NULL)
 	{
-		assert(Vaule);
+		assert(Value);
 		return NULL;
 	}
 
