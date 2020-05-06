@@ -12,14 +12,11 @@ int insert_Xmutex(BST *_Tree, unsigned int value)
 	if(NewNode == NULL)                                //Exception
 	{
 		printf("FAIL to insert new noed!!!\n");
-		return NULL;
-	}
-
-
-
-	
 		return FALSE;
 	}        
+					
+
+
 					
 	init_node(NewNode, value);                         //make NewNode
 	
