@@ -10,7 +10,7 @@ int remove_Xmutex(BST *tree, unsigned int x)
     if(!p)
     {
         printf("Empty tree!!!\n");
-        return true;
+        return TRUE;
     }
 
     while(p)
@@ -119,7 +119,7 @@ int remove_cg(BST *tree, unsigned int x)
     if(!p)
     {
         printf("Empty tree!!!\n");
-        return true;
+        return TRUE;
     }
 
     while(p)
@@ -241,7 +241,7 @@ int remove_fg(BST *tree, unsigned int x)
     if(!p)
     {
         printf("Empty tree!!!\n");
-        return true;
+        return TRUE;
     }
 
     while(p)
