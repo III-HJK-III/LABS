@@ -131,11 +131,13 @@ int remove_cg(BST *tree, unsigned int x)
         else if(p->key > x)
         {
             q = p;
+            if(!q) printf(" ][][][ %u\n",q->key);
             p = p->l_child;
         }
         else
         {
             q = p;
+            if(!q) printf(" ][][][ %u\n",q->key);
             p = p->r_child;
         }
     }
@@ -149,8 +151,6 @@ int remove_cg(BST *tree, unsigned int x)
 
     if(!p->l_child && !p->r_child)//no child
     {
-        if(p == tree->root)//if 'what 2 erase' is root
-            tree -> root = NULL;
         else if(p == q->l_child)
             q->l_child = NULL;
         else
