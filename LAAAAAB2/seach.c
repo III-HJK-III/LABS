@@ -4,6 +4,9 @@ Node* Search(BST *_Node, unsigned int value)
 {
 	Node *Value = _Node->root;
 	
+	if(!Value)
+		return NULL;
+		
 	while(1)
 	{
 		if(Value->key == value)        // if there is same value
