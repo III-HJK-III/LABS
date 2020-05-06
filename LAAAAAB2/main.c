@@ -2,6 +2,8 @@
 
 #include "bst.h"
 
+extern unsigned int counter;//for inorder trav.
+
 int main(int argc, char *argv[])
 {
     if(argc != 3)
@@ -72,7 +74,6 @@ int main(int argc, char *argv[])
 
     BST Sephiroth;//our main bst. start point
     init_tree(&Sephiroth);
-    unsigned int counter = 0;
     unsigned int i = 0;
     unsigned int test = 0;
 
@@ -95,9 +96,9 @@ int main(int argc, char *argv[])
 
         //getting key_vals into input_keys array by inorder trav. instead of printing it out
         printf("Starting inorder traversal\n");
-        io_trav(&Sephiroth, &counter);
+        io_trav(&Sephiroth);
         printf("Done inorder traversal\n");
-        printf("Been travel through %d nodes!",counter);
+        printf("Been travel through %u nodes!",counter);
 
         //tree deleting part, felling root
         printf("Starting Deleting BST......\n");
@@ -133,9 +134,9 @@ int main(int argc, char *argv[])
 
         //getting key_vals into input_keys array by inorder trav. instead of printing it out
         printf("Starting inorder traversal\n");
-        io_trav(&Sephiroth, &counter);
+        io_trav(&Sephiroth);
         printf("Done inorder traversal\n");
-        printf("Been travel through %d nodes!",counter);
+        printf("Been travel through %u nodes!",counter);
 
         //tree deleting part, felling root
         printf("Starting Deleting BST......\n");

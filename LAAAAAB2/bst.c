@@ -1,7 +1,7 @@
 /* 32160320@dankook.ac.kr 권혁준 */
 #include "bst.h"
 
-extern unsigned int counter;//for inorder trav.
+unsigned int counter = 0;//for inorder trav.
 
 //for initializing stuffs
 void init_tree(BST *tree)
