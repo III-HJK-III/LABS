@@ -7,6 +7,7 @@
 #include <assert.h>
 #include <string.h>
 #include <limits.h>
+#inlcude "bst.h"
 
 #define MAX_NODE 1000000
 #define MAX_THREAD 50
