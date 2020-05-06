@@ -294,13 +294,13 @@ int remove_fg(BST *tree, unsigned int x)
     {
         Node* temp = p->l_child;
         Node* p_temp = p;//parent of temp;
-        pthread_mutex_lock(&tree->treeLock);
+        //pthread_mutex_lock(&tree->treeLock);
         while(temp->r_child)
         {
             p_temp = temp;
             temp = temp ->r_child;
         }
-        pthread_mutex_unlock(&tree->treeLock);
+        //pthread_mutex_unlock(&tree->treeLock);
 
         if(p_temp == p)//no r_child 4 1st temp
         {
