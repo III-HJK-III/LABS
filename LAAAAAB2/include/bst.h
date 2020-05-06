@@ -18,8 +18,8 @@ typedef struct _Node
 {
     pthread_mutex_t nodeLock;
     unsigned int key;
-    struct Node* l_child;
-    struct Node* r_child;
+    struct _Node* l_child;
+    struct _Node* r_child;
 } Node;
 
 typedef struct _BST

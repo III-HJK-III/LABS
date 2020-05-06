@@ -8,7 +8,7 @@ void init_tree(BST *tree)
     pthread_mutex_init (&tree->treeLock, NULL);
 }
 
-void init_node(node *nd, unsigned int inval)
+void init_node(Node *nd, unsigned int inval)
 {
     nd -> key = inval;
     nd -> l_child = NULL;
@@ -32,7 +32,7 @@ void io_trav(BST *tree, unsigned int *cnt)
     return;
 }
 
-void ioP(Node* go, unsigned int *cnt)
+void ioP(Node *go, unsigned int *cnt)
 {
     if(go)
     {
