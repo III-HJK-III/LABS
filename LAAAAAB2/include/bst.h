@@ -13,30 +13,30 @@
 #define TRUE 1
 #define FALSE 0
 
-struct BST
-{   
-    //treeLock is used to insure atomicity(acquisition) and tree lock
-    pthread_mutex_t treeLock;
-    Node* root;
-};
-
-struct Node
+typedef struct Node
 {
     pthread_mutex_t nodeLock;
     unsigned int key;
     Node* l_child;
     Node* r_child;
-};
+} Node;
+
+typedef struct BST
+{   
+    //treeLock is used to insure atomicity(acquisition) and tree lock
+    pthread_mutex_t treeLock;
+    Node* root;
+} BST;
 
 //strct arg for thread / got from LAB2 example
-struct thread_arg{
+typedef struct thread_arg{
     pthread_t thread;
     BST *tree;
     unsigned int *arr;
     unsigned int start;
     unsigned int end;
     bool (*func)(BST*,unsigned int);
-};
+} thread_arg;
 
 
 /************function prototype*****************/
