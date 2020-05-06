@@ -28,19 +28,6 @@ struct Node
     Node* r_child;
 };
 
-struct myArr
-{
-    pthread_mutex_t arrLock;
-    unsigned int keyvals[MAX_NODE];
-    unsigned int index;//last val's next index
-};
-
-struct myCounter
-{
-    pthread_mutex_t counterLock;
-    unsigned int counter;
-};
-
 //strct arg for thread / got from LAB2 example
 struct thread_arg{
     pthread_t thread;
@@ -51,13 +38,14 @@ struct thread_arg{
     bool (*func)(BST*,unsigned int);
 };
 
+
 /************function prototype*****************/
 
-//basic func. for bst usage
+//initializing tree and node
 void init_tree(BST *tree);
-void init_myArr(myArr *arr);
 void init_node(node *nd, unsigned int inval);
-void init_myCounter(myCounter *cnt);
+
+//getting random number for insert
 void rand_gen(unsigned int* arr, unsigned int max);
 
 //functions for thread run
@@ -75,12 +63,10 @@ void* seedling(void *arg);
 Node* Search(BST *_Node, int value);
 void* lumberjack(void *arg);
 
-
 //node inserting func.
 bool insert_Xmutex(BST *_Tree, unsigned int value);
 bool insert_CoarseLock(BST *_Tree, unsigned int value);
 bool insert_FineLock(BST *_Tree, unsigned int value);
-
 
 //node removing func.
 bool remove_Xmutex(BST *tree, unsigned int x);
