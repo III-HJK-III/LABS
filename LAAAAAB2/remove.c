@@ -125,13 +125,6 @@ int remove_cg(BST *tree, unsigned int x)
         printf("Empty tree!!!\n");
         return TRUE;
     }
-printf("AAAAA\n");
-
-    pthread_mutex_lock(&tree->treeLock);
-    pthread_mutex_lock(&p->nodeLock);
-    pthread_mutex_lock(&q->nodeLock);
-
-printf("BBBBBB\n");
 
     while(p)
     {
@@ -150,6 +143,10 @@ printf("BBBBBB\n");
             p = p->l_child;
         }
     }
+
+    pthread_mutex_lock(&tree->treeLock);
+    pthread_mutex_lock(&p->nodeLock);
+    pthread_mutex_lock(&q->nodeLock);
 printf("CCCCCCCC\n");
     if(!p)//not found
         return FALSE;
