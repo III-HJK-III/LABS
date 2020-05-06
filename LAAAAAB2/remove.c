@@ -127,7 +127,12 @@ int remove_cg(BST *tree, unsigned int x)
     }
 printf("AAAAA\n");
 
+    pthread_mutex_lock(&tree->treeLock);
+    pthread_mutex_lock(&p->nodeLock);
+    pthread_mutex_lock(&q->nodeLock);
+
 printf("BBBBBB\n");
+
     while(p)
     {
         //find place for x
@@ -145,13 +150,11 @@ printf("BBBBBB\n");
             p = p->l_child;
         }
     }
-
+printf("CCCCCCCC\n");
     if(!p)//not found
         return FALSE;
 
-    pthread_mutex_lock(&tree->treeLock);
-    pthread_mutex_lock(&p->nodeLock);
-    pthread_mutex_lock(&q->nodeLock);
+
     if(!p->l_child && !p->r_child)//no child
     {
         if(p == tree->root)//if 'what 2 erase' is root
