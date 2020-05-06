@@ -142,15 +142,11 @@ int remove_cg(BST *tree, unsigned int x)
     {
         return FALSE;
     }
-
+    pthread_mutex_lock(&tree->treeLock);
     if(p == tree->root)
     {
-        pthread_mutex_lock(&tree->treeLock);
-        pthread_mutex_lock(&p->nodeLock);
-        printf("WAWAWA!\n");
         if(!p->l_child && !p->r_child)//no child
             tree -> root = NULL;
-
         else if(!p->r_child)//only 1 child
         {
             tree -> root = p->l_child;
@@ -161,12 +157,9 @@ int remove_cg(BST *tree, unsigned int x)
             tree -> root = p->r_child;
             p->r_child = NULL;
         }
-        pthread_mutex_unlock(&p->nodeLock);
-        pthread_mutex_unlock(&tree->treeLock);
     }
     else if(p->l_child && p->r_child)
     {
-        pthread_mutex_lock(&tree->treeLock);
         Node* temp = p->l_child;
         Node* p_temp = p;//parent of temp;
 
@@ -175,9 +168,6 @@ int remove_cg(BST *tree, unsigned int x)
             p_temp = temp;
             temp = temp ->r_child;
         }
-        pthread_mutex_lock(&p->nodeLock);
-        pthread_mutex_lock(&p_temp->nodeLock);
-        printf("EEEEEEEE!\n");
         if(p_temp == p)//no r_child 4 1st temp
         {
             p->key = temp->key;
@@ -193,18 +183,10 @@ int remove_cg(BST *tree, unsigned int x)
             p->key = temp->key;
             p_temp->r_child = temp->l_child;
         }
-        printf("EE OUT EE!\n");
-        pthread_mutex_unlock(&p_temp->nodeLock);
-        pthread_mutex_unlock(&p->nodeLock);
-        pthread_mutex_unlock(&tree->treeLock);
         cont = temp;//4 delete
     }
     else
     {
-        pthread_mutex_lock(&tree->treeLock);
-        pthread_mutex_lock(&p->nodeLock);
-        pthread_mutex_lock(&q->nodeLock);
-        printf("ENENENEN!\n");
         if(!p->l_child && !p->r_child)//no child
         {
             if(p == q->l_child)
@@ -238,10 +220,8 @@ int remove_cg(BST *tree, unsigned int x)
                 p->r_child = NULL;
             }
         }
-        pthread_mutex_unlock(&q->nodeLock);
-        pthread_mutex_unlock(&p->nodeLock);
-        pthread_mutex_unlock(&tree->treeLock);
     }
+    pthread_mutex_unlock(&tree->treeLock);
 
     if(cont)
         p = cont;
