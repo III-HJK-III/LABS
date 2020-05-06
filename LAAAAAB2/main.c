@@ -105,11 +105,11 @@ int main(int argc, char *argv[])
         for(i = 0; i < MAX_NODE; i++)
         {
             test = rm_f(&Sephiroth, data[i]);
-            if(!test)
+            /*if(!test)
             {
                 io_trav(&Sephiroth);
                 printf("%u %u %u ????\n",i,data[i],counter);
-            }
+            }*/
             assert(test);
         }
         printf("Done Deleting BST!\n");
