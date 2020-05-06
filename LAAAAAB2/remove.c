@@ -125,6 +125,7 @@ int remove_cg(BST *tree, unsigned int x)
         printf("Empty tree!!!\n");
         return TRUE;
     }
+printf("AAAAA\n");
 
     pthread_mutex_lock(&tree->treeLock);
     pthread_mutex_lock(&p->nodeLock);
@@ -247,13 +248,13 @@ int remove_fg(BST *tree, unsigned int x)
 {
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
-printf("CCCCC\n");
+
     if(!p)
     {
         printf("Empty tree!!!\n");
         return TRUE;
     }
-printf("BBBBBB\n");
+
     while(p)
     {
         //find place for x
@@ -271,8 +272,6 @@ printf("BBBBBB\n");
             p = p->l_child;
         }
     }
-
-printf("AAAAA\n");
 
     if(!p)//not found
         return FALSE;
