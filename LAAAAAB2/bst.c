@@ -58,7 +58,7 @@ void rand_gen(unsigned int* arr, unsigned int max)
         rand_i = ((((unsigned int)rand()<<15)|rand())%max) + 1;
         tmp = arr[i];
         arr[i] = arr[rand_i];
-        arr[rand_i] = temp;
+        arr[rand_i] = tmp;
     }
 }
 
