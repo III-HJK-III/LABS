@@ -56,7 +56,7 @@ void rand_gen(unsigned int* arr, unsigned int max)
     srand((unsigned)time(NULL));
     for(i=0; i < max; i++)
     {
-        rand_i = ((((unsigned int)rand()<<15)|rand())%max);
+        rand_i = ((unsigned int)rand()*(unsigned int)rand()) %max;
         tmp = arr[i];
         arr[i] = arr[rand_i];
         arr[rand_i] = tmp;
