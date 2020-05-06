@@ -73,6 +73,8 @@ int main(int argc, char *argv[])
     BST Sephiroth;//our main bst. start point
     init_tree(&Sephiroth);
     unsigned int counter = 0;
+    unsigned int i = 0;
+    unsigned int test = 0;
 
     unsigned int *data = (unsigned int*)malloc(sizeof(unsigned int)*MAX_NODE);
     assert(data != NULL);
@@ -82,9 +84,6 @@ int main(int argc, char *argv[])
 
     if(option == 3)
     {
-        unsigned int i = 0;
-        unsigned int test = 0;
-
         printf("Starting Insert......\n");
         printf("Creating %u nodes.......\n",MAX_NODE);
         for(i = 0; i < MAX_NODE; i++)
