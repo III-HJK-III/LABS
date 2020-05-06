@@ -47,7 +47,7 @@ void init_tree(BST *tree);
 void init_node(Node *nd, unsigned int inval);
 
 //getting random number for insert
-void rand_gen(unsigned int &arr[], unsigned int max);
+void rand_gen(unsigned int arr[], unsigned int max);
 
 //functions for thread run
 void* seedling(void *arg);//create tree
