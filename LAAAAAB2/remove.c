@@ -143,7 +143,7 @@ int remove_cg(BST *tree, unsigned int x)
             p = p->l_child;
         }
     }
-
+printf("AAAAAAAA\n");
     pthread_mutex_lock(&tree->treeLock);
     pthread_mutex_lock(&p->nodeLock);
     pthread_mutex_lock(&q->nodeLock);
