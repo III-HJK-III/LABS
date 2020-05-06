@@ -23,10 +23,10 @@ int main(int argc, char *argv[])
         printf("Too many threads!!!\nMax thread number is %d!\n",MAX_THREAD);
         assert(thread_no < MAX_THREAD);
     }
-    else if(option != 3 && thread_no < 0)
+    else if(option != 3 && thread_no <= 0)
     {
         printf("Thread number can't be under 0!!!\n");
-        assert(thread_no >= 0);
+        assert(thread_no > 0);
     }
 
     bool (*ins_f)(BST*,unsigned int);//insert function
