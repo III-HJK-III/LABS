@@ -406,7 +406,9 @@ int remove_fg(BST *tree, unsigned int x)
             pthread_mutex_lock(&q->nodeLock);
             p->key = temp->key;
             q->r_child = temp->l_child;
+            pthread_mutex_lock(&temp->nodeLock);
             temp->l_child = NULL;
+            pthread_mutex_unlock(&temp->nodeLock);
             pthread_mutex_unlock(&q->nodeLock);
             pthread_mutex_unlock(&p->nodeLock);
             pthread_mutex_unlock(&tree->treeLock);
