@@ -231,8 +231,6 @@ int remove_cg(BST *tree, unsigned int x)
             pthread_mutex_unlock(&p_temp->nodeLock);
         }
         cont = temp;//4 delete
-        
-
     }
     pthread_mutex_unlock(&q->nodeLock);
     pthread_mutex_unlock(&p->nodeLock);
