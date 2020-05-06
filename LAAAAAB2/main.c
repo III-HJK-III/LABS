@@ -77,11 +77,10 @@ int main(int argc, char *argv[])
     unsigned int i = 0;
     unsigned int test = 0;
 
+//generating MAX_NODE keys
     unsigned int *data = (unsigned int*)malloc(sizeof(unsigned int)*MAX_NODE);
     assert(data != NULL);
     rand_gen(data, MAX_NODE);
-
-    //making 'MAX_NODE' amount of nodes and insert into bst
 
     if(option == 3)
     {
@@ -100,16 +99,11 @@ int main(int argc, char *argv[])
         printf("Done inorder traversal\n");
         printf("Been travel through %u nodes!\n",counter);
 
-        //tree deleting part, felling root
+        //tree deleting part
         printf("Starting Deleting BST......\n");
         for(i = 0; i < MAX_NODE; i++)
         {
             test = rm_f(&Sephiroth, data[i]);
-            /*if(!test)
-            {
-                io_trav(&Sephiroth);
-                printf("%u %u %u ????\n",i,data[i],counter);
-            }*/
             assert(test);
         }
         printf("Done Deleting BST!\n");
@@ -130,8 +124,7 @@ int main(int argc, char *argv[])
             th_arg->start = i*term;
             th_arg->end = (i+1)*term;
             th_arg->func = ins_f;
-
-        pthread_create(&threads[i].thread,NULL,seedling,(void*)th_arg);
+            pthread_create(&threads[i].thread,NULL,seedling,(void*)th_arg);
         }
         for (i = 0; i < thread_no; i++)
             pthread_join(threads[i].thread, NULL);
@@ -143,7 +136,7 @@ int main(int argc, char *argv[])
         printf("Done inorder traversal\n");
         printf("Been travel through %u nodes!\n",counter);
 
-        //tree deleting part, felling root
+        //tree deleting part
         printf("Starting Deleting BST......\n");
         for(i=0; i < thread_no ; i++){
             thread_arg *th_arg = &threads[i];
@@ -152,12 +145,9 @@ int main(int argc, char *argv[])
             th_arg->start = i*term;
             th_arg->end = (i+1)*term;
             th_arg->func = rm_f;
-
-        printf("Starting delet %u\n",i);
-        pthread_create(&threads[i].thread,NULL,seedling,(void*)th_arg);
+            pthread_create(&threads[i].thread,NULL,seedling,(void*)th_arg);
         }
         for (i = 0; i < thread_no; i++)
-            printf("waiting delet %u\n",i);
             pthread_join(threads[i].thread, NULL);
         printf("Done Deleting BST!\n");
     }
