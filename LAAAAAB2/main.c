@@ -145,7 +145,7 @@ int main(int argc, char *argv[])
             th_arg->start = i*term;
             th_arg->end = (i+1)*term;
             th_arg->func = rm_f;
-            pthread_create(&threads[i].thread,NULL,seedling,(void*)th_arg);
+            pthread_create(&threads[i].thread,NULL,lumberjack,(void*)th_arg);
         }
         for (i = 0; i < thread_no; i++)
             pthread_join(threads[i].thread, NULL);
