@@ -26,7 +26,8 @@ int remove_Xmutex(BST *tree, unsigned int x)
     }
 
     if(!p)//not found
-        return FALSE;
+        assert(p);
+        //return FALSE;
 
     if(!p->l_child && !p->r_child)//no child
     {
