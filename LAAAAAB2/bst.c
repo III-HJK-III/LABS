@@ -37,7 +37,6 @@ void ioP(Node *go)
     if(go)
     {
         ioP(go->l_child);
-        printf("Now %u\n",go->key);
         counter++;
         ioP(go->r_child);
     }
