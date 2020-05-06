@@ -24,15 +24,5 @@ Node* Search(BST *_Node, unsigned int value)
 			Value = Value->l_child;
 		}
 	}
-
-
-
-		if(Value)
-	{
-		printf("FAIL after!!!\n");
-	}
-
-
-
 	return Value;
 }
