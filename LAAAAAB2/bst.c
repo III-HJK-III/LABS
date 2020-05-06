@@ -36,9 +36,9 @@ void ioP(Node *go)
 {
     if(go)
     {
-        ioP(go->l_child, cnt);
+        ioP(go->l_child);
         counter++;
-        ioP(go->r_child, cnt);
+        ioP(go->r_child);
     }
 }
 
