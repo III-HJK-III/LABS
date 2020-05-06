@@ -272,6 +272,8 @@ int remove_fg(BST *tree, unsigned int x)
         }
     }
 
+printf("AAAAA\n");
+
     if(!p)//not found
         return FALSE;
 
