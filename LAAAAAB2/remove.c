@@ -175,9 +175,8 @@ int remove_cg(BST *tree, unsigned int x)
             temp = temp ->r_child;
         }
         pthread_mutex_lock(&tree->treeLock);
-        pthread_mutex_lock(&p_temp->nodeLock);
-        pthread_mutex_lock(&temp->nodeLock);
         pthread_mutex_lock(&p->nodeLock);
+        pthread_mutex_lock(&p_temp->nodeLock);
         printf("EEEEEEEE!\n");
         if(p_temp == p)//no r_child 4 1st temp
         {
@@ -193,11 +192,9 @@ int remove_cg(BST *tree, unsigned int x)
         {
             p->key = temp->key;
             p_temp->r_child = temp->l_child;
-            temp->l_child = NULL;
         }
-        pthread_mutex_unlock(&p->nodeLock);
-        pthread_mutex_unlock(&temp->nodeLock);
         pthread_mutex_unlock(&p_temp->nodeLock);
+        pthread_mutex_unlock(&p->nodeLock);
         pthread_mutex_unlock(&tree->treeLock);
         cont = temp;//4 delete
     }
