@@ -2,7 +2,7 @@
 #include "bst.h"
 
 //remove without mutex
-bool remove_Xmutex(BST *tree, unsigned int x)
+int remove_Xmutex(BST *tree, unsigned int x)
 {
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
@@ -104,7 +104,7 @@ bool remove_Xmutex(BST *tree, unsigned int x)
 
 
 //remove with coarse-grained lock
-bool remove_cg(BST *tree, unsigned int x)
+int remove_cg(BST *tree, unsigned int x)
 {
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
@@ -221,7 +221,7 @@ bool remove_cg(BST *tree, unsigned int x)
 
 
 //remove with fine-grained lock
-bool remove_fg(BST *tree, unsigned int x)
+int remove_fg(BST *tree, unsigned int x)
 {
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent

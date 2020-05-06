@@ -36,7 +36,7 @@ typedef struct _thread_arg{
     unsigned int *arr;
     unsigned int start;
     unsigned int end;
-    bool (*func)(BST*,unsigned int);
+    int (*func)(BST*,unsigned int);
 } thread_arg;
 
 
@@ -44,7 +44,7 @@ typedef struct _thread_arg{
 
 //initializing tree and node
 void init_tree(BST *tree);
-void init_node(node *nd, unsigned int inval);
+void init_node(Node *nd, unsigned int inval);
 
 //getting random number for insert
 void rand_gen(unsigned int* arr, unsigned int max);
@@ -65,11 +65,11 @@ Node* Search(BST *_Node, int value);
 void* lumberjack(void *arg);
 
 //node inserting func.
-bool insert_Xmutex(BST *_Tree, unsigned int value);
-bool insert_CoarseLock(BST *_Tree, unsigned int value);
-bool insert_FineLock(BST *_Tree, unsigned int value);
+int insert_Xmutex(BST *_Tree, unsigned int value);
+int insert_CoarseLock(BST *_Tree, unsigned int value);
+int insert_FineLock(BST *_Tree, unsigned int value);
 
 //node removing func.
-bool remove_Xmutex(BST *tree, unsigned int x);
-bool remove_cg(BST *tree, unsigned int x);
-bool remove_fg(BST *tree, unsigned int x);
+int remove_Xmutex(BST *tree, unsigned int x);
+int remove_cg(BST *tree, unsigned int x);
+int remove_fg(BST *tree, unsigned int x);

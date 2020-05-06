@@ -29,8 +29,8 @@ int main(int argc, char *argv[])
         assert(thread_no > 0);
     }
 
-    bool (*ins_f)(BST*,unsigned int);//insert function
-    bool (*rm_f)(BST*,unsigned int);//remove function
+    int (*ins_f)(BST*,unsigned int);//insert function
+    int (*rm_f)(BST*,unsigned int);//remove function
 
     switch(option){
         case 0: 
