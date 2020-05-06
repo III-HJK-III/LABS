@@ -61,11 +61,6 @@ void rand_gen(unsigned int arr[], unsigned int max)
         arr[i] = arr[rand_i];
         arr[rand_i] = tmp;
     }
-
-    for(i=0; i < max; i++)
-    {
-        printf("Its %u\n",arr[i]);
-    }
 }
 
 //functions for thread run

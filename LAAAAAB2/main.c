@@ -80,6 +80,10 @@ int main(int argc, char *argv[])
     unsigned int *data = (unsigned int*)malloc(sizeof(unsigned int)*MAX_NODE);
     assert(data != NULL);
     rand_gen(data, MAX_NODE);
+        for(i=0; i < MAX_NODE; i++)
+    {
+        printf("Its %u\n",data[i]);
+    }
 
     //making 'MAX_NODE' amount of nodes and insert into bst
 
