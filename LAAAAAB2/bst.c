@@ -44,7 +44,7 @@ void ioP(Node *go)
 }
 
 //for random key val. generating
-void rand_gen(unsigned int* arr, unsigned int max)
+void rand_gen(unsigned int &arr[], unsigned int max)
 {
     unsigned int i = 0;
     unsigned int rand_i = 0;
@@ -56,7 +56,7 @@ void rand_gen(unsigned int* arr, unsigned int max)
     srand((unsigned)time(NULL));
     for(i=0; i < max; i++)
     {
-        rand_i = ((unsigned int)rand()*(unsigned int)rand()) %max;
+        rand_i = ((((unsigned int)rand()<<15)|rand())%max);
         tmp = arr[i];
         arr[i] = arr[rand_i];
         arr[rand_i] = tmp;

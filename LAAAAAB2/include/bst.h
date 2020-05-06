@@ -33,7 +33,7 @@ typedef struct _BST
 typedef struct _thread_arg{
     pthread_t thread;
     BST *tree;
-    //unsigned int *arr;
+    unsigned int *arr;
     unsigned int start;
     unsigned int end;
     int (*func)(BST*,unsigned int);
@@ -47,7 +47,7 @@ void init_tree(BST *tree);
 void init_node(Node *nd, unsigned int inval);
 
 //getting random number for insert
-void rand_gen(unsigned int max);
+void rand_gen(unsigned int &arr[], unsigned int max);
 
 //functions for thread run
 void* seedling(void *arg);//create tree

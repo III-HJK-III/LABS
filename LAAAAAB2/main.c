@@ -2,9 +2,7 @@
 
 #include "bst.h"
 
-extern unsigned int counter;//for inorder trav.
-extern unsigned int data[];
-
+unsigned int counter = 0;//for inorder trav.
 
 int main(int argc, char *argv[])
 {
@@ -59,7 +57,7 @@ int main(int argc, char *argv[])
             break;
 
         case 3:
-            printf("BST by Single-Thread Without Mutex\n");
+            printf("BST by Single-Thread\n");
             ins_f = insert_Xmutex;
             rm_f = remove_Xmutex;
             break;
@@ -78,6 +76,8 @@ int main(int argc, char *argv[])
     init_tree(&Sephiroth);
     unsigned int i = 0;
     unsigned int test = 0;
+
+    unsigned int *data = (unsigned int*)malloc(sizeof(unsigned int)*MAX_NODE);
     assert(data != NULL);
     rand_gen(data, MAX_NODE);
 
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
         printf("Starting inorder traversal\n");
         io_trav(&Sephiroth);
         printf("Done inorder traversal\n");
-        printf("Been travel through %u nodes!\n",counter);
+        printf("Been travel through %u nodes!",counter);
 
         //tree deleting part, felling root
         printf("Starting Deleting BST......\n");
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
         printf("Starting inorder traversal\n");
         io_trav(&Sephiroth);
         printf("Done inorder traversal\n");
-        printf("Been travel through %u nodes!\n",counter);
+        printf("Been travel through %u nodes!",counter);
 
         //tree deleting part, felling root
         printf("Starting Deleting BST......\n");
