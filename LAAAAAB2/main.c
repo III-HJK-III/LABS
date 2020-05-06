@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
         printf("Starting inorder traversal\n");
         io_trav(&Sephiroth);
         printf("Done inorder traversal\n");
-        printf("Been travel through %u nodes!",counter);
+        printf("Been travel through %u nodes!\n",counter);
 
         //tree deleting part, felling root
         printf("Starting Deleting BST......\n");
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
         printf("Starting inorder traversal\n");
         io_trav(&Sephiroth);
         printf("Done inorder traversal\n");
-        printf("Been travel through %u nodes!",counter);
+        printf("Been travel through %u nodes!\n",counter);
 
         //tree deleting part, felling root
         printf("Starting Deleting BST......\n");
