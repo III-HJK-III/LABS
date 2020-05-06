@@ -8,12 +8,6 @@ void init_tree(BST *tree)
     pthread_mutex_init (&tree->treeLock, NULL);
 }
 
-void init_myArr(myArr *arr)
-{
-    arr -> index = 0;
-    pthread_mutex_init (&arr -> arrLock, NULL);
-}
-
 void init_node(node *nd, unsigned int inval)
 {
     nd -> key = inval;
@@ -22,23 +16,19 @@ void init_node(node *nd, unsigned int inval)
     pthread_mutex_init (&nd -> nodeLock, NULL);
 }
 
-void init_myCounter(myCounter *cnt)
-{
-    cnt -> counter = 0;
-    pthread_mutex_init (&cnt -> nodeLock, NULL);
-}
-
 
 //for inorder traversal
-void io_trav(BST *tree, myArr *arr)
+void io_trav(BST *tree, unsigned int *cnt)
 {
+    *cnt = 0;
         if(tree -> root)
     {
         printf("Empty!!\n");
         return;
     }
     
-    ioP(tree -> root, myArr);
+    ioP(tree -> root, cnt);
+    *cnt++;
     return;
 }
 
@@ -47,12 +37,7 @@ void ioP(Node* go, maArr *arr)
     if(go)
     {
         ioP(go->l_child, arr);
-
-        pthread_mutex_lock(arr->arrLock);
-        arr->index++;
-        arr->keyvals[index-1] = go->key;
-        pthread_mutex_unlock(arr->arrLock);
-
+        *cnt++;
         ioP(go->r_child, arr);
     }
 }
