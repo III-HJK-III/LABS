@@ -108,7 +108,7 @@ int remove_Xmutex(BST *tree, unsigned int x)
         }
     }
 
-    if(!cont)
+    if(cont)
         p = cont;
     free(p);
     return TRUE;
@@ -235,7 +235,7 @@ int remove_cg(BST *tree, unsigned int x)
     pthread_mutex_unlock(&p->nodeLock);
     pthread_mutex_unlock(&tree->treeLock);
 
-    if(!cont)
+    if(cont)
         p = cont;
     free(p);
     return TRUE;
@@ -420,7 +420,7 @@ int remove_fg(BST *tree, unsigned int x)
             }
         }
     }
-    if(!cont)
+    if(cont)
         p = cont;
     free(p);
     return TRUE;
