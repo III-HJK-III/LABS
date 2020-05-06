@@ -247,13 +247,13 @@ int remove_fg(BST *tree, unsigned int x)
 {
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
-
+printf("CCCCC\n");
     if(!p)
     {
         printf("Empty tree!!!\n");
         return TRUE;
     }
-
+printf("BBBBBB\n");
     while(p)
     {
         //find place for x
