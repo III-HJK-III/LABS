@@ -20,14 +20,14 @@ int insert_Xmutex(BST *_Tree, unsigned int value)
 	
 	if (Search(value) == NULL)                          //what if value is already there?
 	{
-		Free(NewNode);
+		free(NewNode);
 		return FALSE;
 	}
 
 
 	Node *Value = _Tree->root;                         //declare Value for value
 
-	While(1)
+	while(1)
 	{
 		if(Value->key < value)                         //if value is bigger
 		{
@@ -72,14 +72,14 @@ int insert_CoarseLock(BST *_Tree, unsigned int value)
 	
 	if (Search(value) == NULL)                           //what if value is already there?
 	{
-		Free(NewNode);
+		free(NewNode);
 		return FALSE;
 	}
 
 	Node *Value = _Tree->root;                          //declare Value for value
 	Node *Temp = NULL;                                  //Temp for Lock
  
-	While(1)
+	while(1)
 	{
 		pthread_mutex_lock(&Value->nodeLock);           //Lock Tree
 		if(Value->key < value)                          //if value is bigger
@@ -129,13 +129,13 @@ int insert_FineLock(BST *_Tree, unsigned int value)
 	
 	if (Search(value) == NULL)                            //what if value is already there?
 	{
-		Free(NewNode);
+		free(NewNode);
 		return FALSE;
 	}
 
 	Node *Value = _Tree->root;                           //declare Value for value
 
-	While(1)
+	while(1)
 	{
 		if(Value->key < value)                           //if value is bigger
 		{
