@@ -90,7 +90,7 @@ void* lumberjack(void *arg)//destrory tree
     unsigned int i;
     unsigned int test;
     for(i=start ; i < end; i++ ){
-        //printf("%u %u WA!\n",i, data[i]);
+        printf("%u %u WA!\n",i, data[i]);
         test = remove(tree, data[i]);
         assert(test); // fail to remove one node -no node matching the input key-
     }
