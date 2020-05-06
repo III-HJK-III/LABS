@@ -87,7 +87,7 @@ void* lumberjack(void *arg)//destrory tree
     BST *tree = th_arg->tree;
     unsigned int *data = th_arg->arr;
     unsigned int start = th_arg->start, end = th_arg->end;
-    void (*remove)(BST*,unsigned int) = th_arg->func;
+    int (*remove)(BST*,unsigned int) = th_arg->func;
     unsigned int i;
     unsigned int test;
     for(i=start ; i < end; i++ ){
