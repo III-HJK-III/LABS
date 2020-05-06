@@ -1,6 +1,5 @@
 /* 32160320@dankook.ac.kr 권혁준 */
-
-#include "bst.h"
+#include "include/bst.h"
 
 //remove without mutex
 bool remove_Xmutex(BST *tree, unsigned int x)

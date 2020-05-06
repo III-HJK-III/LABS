@@ -1,6 +1,6 @@
 /* 32160320@dankook.ac.kr 권혁준 */
 
-#include "bst.h"
+#include "include/bst.h"
 
 int main(int argc, char *argv[])
 {

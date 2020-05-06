@@ -1,7 +1,7 @@
 /********************************************************/
 /**********Made by 박경녕 from DKU, 32161553**********/
 /********************************************************/ 
-#include "bst.h"
+#include "include/bst.h"
 
 bool insert_Xmutex(BST *_Tree, unsigned int value)
 {

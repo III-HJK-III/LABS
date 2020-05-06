@@ -1,4 +1,4 @@
-#include "BST.h"
+#include "include/bst.h"
 
 Node* Search(BST *_Node, int value)
 {
