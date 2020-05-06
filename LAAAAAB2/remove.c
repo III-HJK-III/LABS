@@ -7,12 +7,6 @@ int remove_Xmutex(BST *tree, unsigned int x)
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
 
-    if(!p)
-    {
-        printf("Empty tree!!!\n");
-        return TRUE;
-    }
-
     while(p)
     {
         if(x == p->key)
@@ -118,12 +112,6 @@ int remove_cg(BST *tree, unsigned int x)
     Node* q = NULL;//p's parent
     Node* cont = NULL;//Used for lock
 
-    if(p==NULL)
-    {
-        printf("Empty tree!!!\n");
-        return TRUE;
-    }
-
     while(p)
     {
         if(x == p->key)
@@ -131,13 +119,11 @@ int remove_cg(BST *tree, unsigned int x)
         else if(p->key > x)
         {
             q = p;
-            if(!q) printf(" ][][][ %u\n",q->key);
             p = p->l_child;
         }
         else
         {
             q = p;
-            if(!q) printf(" ][][][ %u\n",q->key);
             p = p->r_child;
         }
     }
@@ -246,12 +232,6 @@ int remove_fg(BST *tree, unsigned int x)
 {
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
-
-    if(!p)
-    {
-        printf("Empty tree!!!\n");
-        return TRUE;
-    }
 
     while(p)
     {
