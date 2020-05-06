@@ -118,13 +118,17 @@ int remove_cg(BST *tree, unsigned int x)
             break;
         else if(p->key > x)
         {
+            pthread_mutex_lock(&tree->treeLock);
             q = p;
             p = p->l_child;
+            pthread_mutex_unlock(&tree->treeLock);
         }
         else
         {
+            pthread_mutex_lock(&tree->treeLock);
             q = p;
             p = p->r_child;
+            pthread_mutex_unlock(&tree->treeLock);
         }
     }
     

@@ -6,7 +6,6 @@ Node* Search(BST *_Node, unsigned int value)
 	
 	if(Value == NULL)
 	{
-		printf("FAIL!!!\n");
 		return NULL;
 	}
 
@@ -24,15 +23,5 @@ Node* Search(BST *_Node, unsigned int value)
 			Value = Value->l_child;
 		}
 	}
-
-
-
-		if(Value)
-	{
-		printf("FAIL after!!!\n");
-	}
-
-
-
 	return Value;
 }
