@@ -27,7 +27,7 @@ Node* Search(BST *_Node, unsigned int value)
 
 
 
-		if(Value =! NULL)
+		if(Value)
 	{
 		printf("FAIL after!!!\n");
 	}
