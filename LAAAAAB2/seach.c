@@ -5,7 +5,10 @@ Node* Search(BST *_Node, unsigned int value)
 	Node *Value = _Node->root;
 	
 	if(Value == NULL)
+	{
+		assert(Vaule);
 		return NULL;
+	}
 
 	while(Value)
 	{
