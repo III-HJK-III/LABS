@@ -2,7 +2,7 @@
 
 #include "bst.h"
 
-unsigned int counter = 0;//for inorder trav.
+extern unsigned int counter;//for inorder trav.
 
 int main(int argc, char *argv[])
 {
