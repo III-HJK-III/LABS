@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
             break;
 
         case 3:
-            printf("BST by Single-Thread\n");
+            printf("BST by Single-Thread Without Mutex\n");
             ins_f = insert_Xmutex;
             rm_f = remove_Xmutex;
             break;
