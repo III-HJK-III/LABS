@@ -31,7 +31,7 @@ int remove_Xmutex(BST *tree, unsigned int x)
         if(!q)//dbg
         printf("whatthe\n");
 
-        if(x==p->key//dbg
+        if(x==p->key)//dbg
         printf("SAME\n");
 
     if(!p)//not found
