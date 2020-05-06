@@ -118,11 +118,13 @@ int remove_cg(BST *tree, unsigned int x)
             break;
         else if(p->key > x)
         {
+            printf(">>>>>\n");
             q = p;
             p = p->l_child;
         }
         else
         {
+            printf("<<<<<\n");
             q = p;
             p = p->r_child;
         }
