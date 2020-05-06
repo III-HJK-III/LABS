@@ -166,6 +166,7 @@ int remove_cg(BST *tree, unsigned int x)
     }
     else if(p->l_child && p->r_child)
     {
+        pthread_mutex_lock(&tree->treeLock);
         Node* temp = p->l_child;
         Node* p_temp = p;//parent of temp;
 
@@ -174,7 +175,6 @@ int remove_cg(BST *tree, unsigned int x)
             p_temp = temp;
             temp = temp ->r_child;
         }
-        pthread_mutex_lock(&tree->treeLock);
         pthread_mutex_lock(&p->nodeLock);
         pthread_mutex_lock(&p_temp->nodeLock);
         printf("EEEEEEEE!\n");
