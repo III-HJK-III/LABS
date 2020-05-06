@@ -105,11 +105,6 @@ int main(int argc, char *argv[])
         for(i = 0; i < MAX_NODE; i++)
         {
             test = rm_f(&Sephiroth, data[i]);
-            /*if(!test)
-            {
-                io_trav(&Sephiroth);
-                printf("%u %u %u ????\n",i,data[i],counter);
-            }*/
             assert(test);
         }
         printf("Done Deleting BST!\n");
@@ -157,7 +152,6 @@ int main(int argc, char *argv[])
         pthread_create(&threads[i].thread,NULL,seedling,(void*)th_arg);
         }
         for (i = 0; i < thread_no; i++)
-            printf("waiting delet %u\n",i);
             pthread_join(threads[i].thread, NULL);
         printf("Done Deleting BST!\n");
     }
