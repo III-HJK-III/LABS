@@ -146,6 +146,9 @@ int remove_cg(BST *tree, unsigned int x)
 
     if(!p)//not found
         return FALSE;
+        
+    if(!q)//dbg
+        printf("whatthe\n");;
 
     pthread_mutex_lock(&tree->treeLock);
     pthread_mutex_lock(&p->nodeLock);
