@@ -49,11 +49,11 @@ void rand_gen(unsigned int* arr, unsigned int max)
     unsigned int rand_i = 0;
     unsigned int tmp = 0;
 
-    for(i=0; i < max, i++)
+    for(i=0; i < max,; i++)
         arr[i] = i+1;
     
     srand((unsigned)time(NULL));
-    for(i=0; i < max, i++)
+    for(i=0; i < max; i++)
     {
         rand_i = ((((unsigned int)rand()<<15)|rand())%max) + 1;
         temp = arr[i];
@@ -70,7 +70,7 @@ void* seedling(void *arg)//create tree
     BST *tree = th_arg->tree;
     unsigned int *data = th_arg->arr;
     unsigned int start = th_arg->start, end = th_arg->end;
-    bool (*insert)(BST*,unsigned int) = func;
+    int (*insert)(BST*,unsigned int) = func;
     unsigned int i;
     unsigned int test;
 
