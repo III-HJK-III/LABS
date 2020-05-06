@@ -42,34 +42,34 @@ int remove_Xmutex(BST *tree, unsigned int x)
             tree -> root = p->r_child;
             p->r_child = NULL;
         }
-    }
-    if(p->l_child && p->r_child)
-    {
-        Node* temp = p->l_child;
-        Node* p_temp = p;//parent of temp;
-        while(temp->r_child)
-        {
-            p_temp = temp;
-            temp = temp ->r_child;
-        }
-        
-        if(p_temp == p)//no r_child 4 1st temp
-        {
-            p->key = temp->key;
-            p->l_child = temp->l_child;
-        }
-        else if(!temp->l_child)
-        {
-            p->key = temp->key;
-            p_temp->r_child = NULL;
-        }
         else
         {
-            p->key = temp->key;
-            p_temp->r_child = temp->l_child;
-            temp->l_child = NULL;
+            Node* temp = p->l_child;
+            Node* p_temp = p;//parent of temp;
+            while(temp->r_child)
+            {
+                p_temp = temp;
+                temp = temp ->r_child;
+            }
+        
+            if(p_temp == p)//no r_child 4 1st temp
+            {
+                p->key = temp->key;
+                p->l_child = temp->l_child;
+            }
+            else if(!temp->l_child)
+            {
+                p->key = temp->key;
+                p_temp->r_child = NULL;
+            }
+            else
+            {
+                p->key = temp->key;
+                p_temp->r_child = temp->l_child;
+                temp->l_child = NULL;
+            }
+            cont = temp;//4 delete
         }
-        cont = temp;//4 delete
     }
     else
     {
@@ -105,6 +105,34 @@ int remove_Xmutex(BST *tree, unsigned int x)
                 q->r_child = p->r_child;
                 p->r_child = NULL;
             }
+        }
+        else
+        {
+            Node* temp = p->l_child;
+            Node* p_temp = p;//parent of temp;
+            while(temp->r_child)
+            {
+                p_temp = temp;
+                temp = temp ->r_child;
+            }
+        
+            if(p_temp == p)//no r_child 4 1st temp
+            {
+                p->key = temp->key;
+                p->l_child = temp->l_child;
+            }
+            else if(!temp->l_child)
+            {
+                p->key = temp->key;
+                p_temp->r_child = NULL;
+            }
+            else
+            {
+                p->key = temp->key;
+                p_temp->r_child = temp->l_child;
+                temp->l_child = NULL;
+            }
+            cont = temp;//4 delete
         }
     }
 
@@ -158,33 +186,34 @@ int remove_cg(BST *tree, unsigned int x)
             tree -> root = p->r_child;
             p->r_child = NULL;
         }
-    }
-    if(p->l_child && p->r_child)
-    {
-        Node* temp = p->l_child;
-        Node* p_temp = p;//parent of temp;
-
-        while(temp->r_child)
-        {
-            p_temp = temp;
-            temp = temp ->r_child;
-        }
-        if(p_temp == p)//no r_child 4 1st temp
-        {
-            p->key = temp->key;
-            p->l_child = temp->l_child;
-        }
-        else if(!temp->l_child)
-        {
-            p->key = temp->key;
-            p_temp->r_child = NULL;
-        }
         else
         {
-            p->key = temp->key;
-            p_temp->r_child = temp->l_child;
+            Node* temp = p->l_child;
+            Node* p_temp = p;//parent of temp;
+            while(temp->r_child)
+            {
+                p_temp = temp;
+                temp = temp ->r_child;
+            }
+        
+            if(p_temp == p)//no r_child 4 1st temp
+            {
+                p->key = temp->key;
+                p->l_child = temp->l_child;
+            }
+            else if(!temp->l_child)
+            {
+                p->key = temp->key;
+                p_temp->r_child = NULL;
+            }
+            else
+            {
+                p->key = temp->key;
+                p_temp->r_child = temp->l_child;
+                temp->l_child = NULL;
+            }
+            cont = temp;//4 delete
         }
-        cont = temp;//4 delete
     }
     else
     {
@@ -220,6 +249,34 @@ int remove_cg(BST *tree, unsigned int x)
                 q->r_child = p->r_child;
                 p->r_child = NULL;
             }
+        }
+        else
+        {
+            Node* temp = p->l_child;
+            Node* p_temp = p;//parent of temp;
+            while(temp->r_child)
+            {
+                p_temp = temp;
+                temp = temp ->r_child;
+            }
+        
+            if(p_temp == p)//no r_child 4 1st temp
+            {
+                p->key = temp->key;
+                p->l_child = temp->l_child;
+            }
+            else if(!temp->l_child)
+            {
+                p->key = temp->key;
+                p_temp->r_child = NULL;
+            }
+            else
+            {
+                p->key = temp->key;
+                p_temp->r_child = temp->l_child;
+                temp->l_child = NULL;
+            }
+            cont = temp;//4 delete
         }
     }
 
@@ -258,7 +315,6 @@ int remove_fg(BST *tree, unsigned int x)
     
     if(!p)
         return FALSE;
-
     if(p == tree->root)
     {
         if(!p->l_child && !p->r_child)//no child
@@ -267,75 +323,63 @@ int remove_fg(BST *tree, unsigned int x)
             tree -> root = NULL;
             pthread_mutex_unlock(&tree->treeLock);
         }
-
         else if(!p->r_child)//only 1 child
         {
             pthread_mutex_lock(&tree->treeLock);
-            pthread_mutex_lock(&p->nodeLock);
-            printf("WA! 2 \n");
             tree -> root = p->l_child;
-            p->l_child = NULL;
-            pthread_mutex_unlock(&p->nodeLock);
             pthread_mutex_unlock(&tree->treeLock);
         }
         else if(!p->l_child)
         {
             pthread_mutex_lock(&tree->treeLock);
-            pthread_mutex_lock(&p->nodeLock);
-            printf("WA! 3 \n");
             tree -> root = p->r_child;
-            p->r_child = NULL;
-            pthread_mutex_unlock(&p->nodeLock);
-            pthread_mutex_unlock(&tree->treeLock);
-        }
-    }
-    if(p->l_child && p->r_child)
-    {
-        Node* temp = p->l_child;
-        Node* p_temp = p;//parent of temp;
-        //pthread_mutex_lock(&tree->treeLock);
-        while(temp->r_child)
-        {
-            p_temp = temp;
-            temp = temp ->r_child;
-        }
-        //pthread_mutex_unlock(&tree->treeLock);
-
-        if(p_temp == p)//no r_child 4 1st temp
-        {
-            pthread_mutex_lock(&tree->treeLock);
-            pthread_mutex_lock(&p->nodeLock);
-            printf("WA! 4 \n");
-            p->key = temp->key;
-            p->l_child = temp->l_child;
-            pthread_mutex_unlock(&p->nodeLock);
-            pthread_mutex_unlock(&tree->treeLock);
-        }
-        else if(!temp->l_child)
-        {
-            pthread_mutex_lock(&tree->treeLock);
-            pthread_mutex_lock(&p->nodeLock);
-            pthread_mutex_lock(&p_temp->nodeLock);
-            printf("WA! 5 \n");
-            p->key = temp->key;
-            p_temp->r_child = NULL;
-            pthread_mutex_unlock(&p_temp->nodeLock);
-            pthread_mutex_unlock(&p->nodeLock);
             pthread_mutex_unlock(&tree->treeLock);
         }
         else
         {
+            Node* temp = p->l_child;
+            Node* p_temp = p;//parent of temp;
             pthread_mutex_lock(&tree->treeLock);
-            pthread_mutex_lock(&p->nodeLock);
-            pthread_mutex_lock(&p_temp->nodeLock);
-            printf("WA! 6 \n");
-            p->key = temp->key;
-            p_temp->r_child = temp->l_child;
-            pthread_mutex_unlock(&p_temp->nodeLock);
-            pthread_mutex_unlock(&p->nodeLock);
+            while(temp->r_child)
+            {
+                p_temp = temp;
+                temp = temp ->r_child;
+            }
             pthread_mutex_unlock(&tree->treeLock);
+        
+            if(p_temp == p)//no r_child 4 1st temp
+            {
+                pthread_mutex_lock(&tree->treeLock);
+                pthread_mutex_lock(&p->nodeLock);
+                p->key = temp->key;
+                p->l_child = temp->l_child;
+                pthread_mutex_unlock(&p->nodeLock);
+                pthread_mutex_unlock(&tree->treeLock);
+            }
+            else if(!temp->l_child)
+            {
+                pthread_mutex_lock(&tree->treeLock);
+                pthread_mutex_lock(&p->nodeLock);
+                pthread_mutex_lock(&p_temp->nodeLock);
+                p->key = temp->key;
+                p_temp->r_child = NULL;
+                pthread_mutex_unlock(&p_temp->nodeLock);
+                pthread_mutex_unlock(&p->nodeLock);
+                pthread_mutex_unlock(&tree->treeLock);
+            }
+            else
+            {
+            	pthread_mutex_lock(&tree->treeLock);
+            	pthread_mutex_lock(&p->nodeLock);
+            	pthread_mutex_lock(&p_temp->nodeLock);
+                p->key = temp->key;
+                p_temp->r_child = temp->l_child;
+            	pthread_mutex_unlock(&p_temp->nodeLock);
+            	pthread_mutex_unlock(&p->nodeLock);
+            	pthread_mutex_unlock(&tree->treeLock);
+            }
+            cont = temp;//4 delete
         }
-        cont = temp;//4 delete
     }
     else
     {
@@ -345,7 +389,6 @@ int remove_fg(BST *tree, unsigned int x)
             {
                 pthread_mutex_lock(&tree->treeLock);
                 pthread_mutex_lock(&q->nodeLock);
-                printf("WA! 7 \n");
                 q->l_child = NULL;
                 pthread_mutex_unlock(&q->nodeLock);
                 pthread_mutex_unlock(&tree->treeLock);
@@ -354,7 +397,6 @@ int remove_fg(BST *tree, unsigned int x)
             {
                 pthread_mutex_lock(&tree->treeLock);
                 pthread_mutex_lock(&q->nodeLock);
-                printf("WA! 8 \n");
                 q->r_child = NULL;
                 pthread_mutex_unlock(&q->nodeLock);
                 pthread_mutex_unlock(&tree->treeLock);
@@ -364,22 +406,14 @@ int remove_fg(BST *tree, unsigned int x)
         {
             if(p == q->l_child)
             {
-                pthread_mutex_lock(&tree->treeLock);
-                pthread_mutex_lock(&q->nodeLock);
-                pthread_mutex_lock(&p->nodeLock);
-                printf("WA! 9 \n");
                 q->l_child = p->l_child;
                 p->l_child = NULL;
-                pthread_mutex_unlock(&p->nodeLock);
-                pthread_mutex_unlock(&q->nodeLock);
-                pthread_mutex_unlock(&tree->treeLock);
             }
             else
             {
                 pthread_mutex_lock(&tree->treeLock);
                 pthread_mutex_lock(&q->nodeLock);
                 pthread_mutex_lock(&p->nodeLock);
-                printf("WA! 10 \n");
                 q->r_child = p->l_child;
                 p->l_child = NULL;
                 pthread_mutex_unlock(&p->nodeLock);
@@ -394,7 +428,6 @@ int remove_fg(BST *tree, unsigned int x)
                 pthread_mutex_lock(&tree->treeLock);
                 pthread_mutex_lock(&q->nodeLock);
                 pthread_mutex_lock(&p->nodeLock);
-                printf("WA! 11 \n");
                 q->l_child = p->r_child;
                 p->r_child = NULL;
                 pthread_mutex_unlock(&p->nodeLock);
@@ -406,13 +439,57 @@ int remove_fg(BST *tree, unsigned int x)
                 pthread_mutex_lock(&tree->treeLock);
                 pthread_mutex_lock(&q->nodeLock);
                 pthread_mutex_lock(&p->nodeLock);
-                printf("WA! 12 \n");
                 q->r_child = p->r_child;
                 p->r_child = NULL;
                 pthread_mutex_unlock(&p->nodeLock);
                 pthread_mutex_unlock(&q->nodeLock);
                 pthread_mutex_unlock(&tree->treeLock);
             }
+        }
+        else
+        {
+            Node* temp = p->l_child;
+            Node* p_temp = p;//parent of temp;
+            pthread_mutex_lock(&tree->treeLock);
+            while(temp->r_child)
+            {
+                p_temp = temp;
+                temp = temp ->r_child;
+            }
+            pthread_mutex_unlock(&tree->treeLock);
+        
+            if(p_temp == p)//no r_child 4 1st temp
+            {
+                pthread_mutex_lock(&tree->treeLock);
+                pthread_mutex_lock(&p->nodeLock);
+                p->key = temp->key;
+                p->l_child = temp->l_child;
+                pthread_mutex_unlock(&p->nodeLock);
+                pthread_mutex_unlock(&tree->treeLock);
+            }
+            else if(!temp->l_child)
+            {
+                pthread_mutex_lock(&tree->treeLock);
+                pthread_mutex_lock(&p->nodeLock);
+                pthread_mutex_lock(&p_temp->nodeLock);
+                p->key = temp->key;
+                p_temp->r_child = NULL;
+                pthread_mutex_unlock(&p_temp->nodeLock);
+                pthread_mutex_unlock(&p->nodeLock);
+                pthread_mutex_unlock(&tree->treeLock);
+            }
+            else
+            {
+                pthread_mutex_lock(&tree->treeLock);
+                pthread_mutex_lock(&p->nodeLock);
+                pthread_mutex_lock(&p_temp->nodeLock);
+                p->key = temp->key;
+                p_temp->r_child = temp->l_child;
+                pthread_mutex_unlock(&p_temp->nodeLock);
+                pthread_mutex_unlock(&p->nodeLock);
+                pthread_mutex_unlock(&tree->treeLock);
+            }
+            cont = temp;//4 delete
         }
     }
     if(cont)
