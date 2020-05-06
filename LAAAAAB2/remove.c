@@ -94,15 +94,19 @@ int remove_Xmutex(BST *tree, unsigned int x)
         {
             p->key = temp->key;
             p->l_child = temp->l_child;
-            p = temp;//4 delete
+        }
+        else if(!temp ->l_child)
+        {
+            p->key = temp->key;
+            q->r_child = NULL;
         }
         else
         {
             p->key = temp->key;
-            q->r_child = NULL;
-            p = temp;//4 delete
+            q->r_child = temp->l_child;
+            temp->l_child = NULL;
         }
-
+        p = temp;//4 delete
     }
     free(p);
     return TRUE;
@@ -208,16 +212,26 @@ int remove_cg(BST *tree, unsigned int x)
         {
             p->key = temp->key;
             p->l_child = temp->l_child;
-            cont = temp;//4 delete
         }
-        else
+        else if(!temp->l_child)
         {
             p->key = temp->key;
             pthread_mutex_lock(&p_temp->nodeLock);
             p_temp->r_child = NULL;
             pthread_mutex_unlock(&p_temp->nodeLock);
-            cont = temp;//4 delete
         }
+        else
+        {
+            p->key = temp->key;
+            pthread_mutex_lock(&p_temp->nodeLock);
+            pthread_mutex_lock(&temp->nodeLock);
+            p_temp->r_child = temp->l_child;
+            temp->l_child = NULL;
+            pthread_mutex_unlock(&temp->nodeLock);
+            pthread_mutex_unlock(&p_temp->nodeLock);
+        }
+        cont = temp;//4 delete
+        
 
     }
     pthread_mutex_unlock(&q->nodeLock);
@@ -377,9 +391,8 @@ int remove_fg(BST *tree, unsigned int x)
             p->l_child = temp->l_child;
             pthread_mutex_unlock(&p->nodeLock);
             pthread_mutex_unlock(&tree->treeLock);
-            p = temp;//4 delete
         }
-        else
+        else if(!temp->l_child)
         {
             pthread_mutex_lock(&tree->treeLock);
             pthread_mutex_lock(&p->nodeLock);
@@ -389,8 +402,20 @@ int remove_fg(BST *tree, unsigned int x)
             pthread_mutex_unlock(&q->nodeLock);
             pthread_mutex_unlock(&p->nodeLock);
             pthread_mutex_unlock(&tree->treeLock);
-            p = temp;//4 delete
         }
+        else
+        {
+            pthread_mutex_lock(&tree->treeLock);
+            pthread_mutex_lock(&p->nodeLock);
+            pthread_mutex_lock(&q->nodeLock);
+            p->key = temp->key;
+            q->r_child = temp->l_child;
+            temp->l_child = NULL;
+            pthread_mutex_unlock(&q->nodeLock);
+            pthread_mutex_unlock(&p->nodeLock);
+            pthread_mutex_unlock(&tree->treeLock);
+        }
+        p = temp;//4 delete
 
     }
     free(p);
