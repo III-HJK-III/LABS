@@ -142,15 +142,6 @@ int remove_cg(BST *tree, unsigned int x)
             break;
     }
 
-        if(!q)//dbg
-        printf("whatthe\n");
-
-        if(x==p->key)//dbg
-        printf("SAME\n");
-        
-    if(!q)//dbg
-        printf("whatthe\n");
-
     pthread_mutex_lock(&tree->treeLock);
     pthread_mutex_lock(&p->nodeLock);
     printf("AAAAAAAA\n");
@@ -277,14 +268,6 @@ int remove_fg(BST *tree, unsigned int x)
         else if(p->key == x) 
             break;
     }
-
-
-        if(!q)//dbg
-        printf("whatthe\n");
-
-        if(x==p->key)//dbg
-        printf("SAME\n");
-
 
     if(!p)//not found
         return FALSE;
