@@ -30,7 +30,7 @@ int remove_Xmutex(BST *tree, unsigned int x)
 
     if(!p->l_child && !p->r_child)//no child
     {
-        if(p == root)//if 'what 2 erase' is root
+        if(p == tree->root)//if 'what 2 erase' is root
             tree -> root = NULL;
         else if(p == q->l_child)
             q->l_child = NULL;
@@ -39,7 +39,7 @@ int remove_Xmutex(BST *tree, unsigned int x)
     }
     else if(!p->r_child)//only 1 child
     {
-        if(p == root)//if 'what 2 erase' is root
+        if(p == tree->root)//if 'what 2 erase' is root
         {
             tree -> root = p->l_child;
             p->l_child = NULL;
@@ -57,7 +57,7 @@ int remove_Xmutex(BST *tree, unsigned int x)
     }
     else if(!p->l_child)
     {
-        if(p == root)//if 'what 2 erase' is root
+        if(p == tree->root)//if 'what 2 erase' is root
         {
             tree -> root = p->r_child;
             p->r_child = NULL;
@@ -138,7 +138,7 @@ int remove_cg(BST *tree, unsigned int x)
     pthread_mutex_lock(&q->nodeLock);
     if(!p->l_child && !p->r_child)//no child
     {
-        if(p == root)//if 'what 2 erase' is root
+        if(p == tree->root)//if 'what 2 erase' is root
             tree -> root = NULL;
         else if(p == q->l_child)
             q->l_child = NULL;
@@ -147,7 +147,7 @@ int remove_cg(BST *tree, unsigned int x)
     }
     else if(!p->r_child)//only 1 child
     {
-        if(p == root)//if 'what 2 erase' is root
+        if(p == tree->root)//if 'what 2 erase' is root
         {
             tree -> root = p->l_child;
             p->l_child = NULL;
@@ -165,7 +165,7 @@ int remove_cg(BST *tree, unsigned int x)
     }
     else if(!p->l_child)
     {
-        if(p == root)//if 'what 2 erase' is root
+        if(p == tree->root)//if 'what 2 erase' is root
         {
             tree -> root = p->r_child;
             p->r_child = NULL;
@@ -249,7 +249,7 @@ int remove_fg(BST *tree, unsigned int x)
 
     if(!p->l_child && !p->r_child)//no child
     {
-        if(p == root)//if 'what 2 erase' is root
+        if(p == tree->root)//if 'what 2 erase' is root
         {
             pthread_mutex_lock(&tree->treeLock);
             tree -> root = NULL;
@@ -274,7 +274,7 @@ int remove_fg(BST *tree, unsigned int x)
     }
     else if(!p->r_child)//only 1 child
     {
-        if(p == root)//if 'what 2 erase' is root
+        if(p == tree->root)//if 'what 2 erase' is root
         {
             pthread_mutex_lock(&tree->treeLock);
             pthread_mutex_lock(&p->nodeLock);
@@ -308,7 +308,7 @@ int remove_fg(BST *tree, unsigned int x)
     }
     else if(!p->l_child)
     {
-        if(p == root)//if 'what 2 erase' is root
+        if(p == tree->root)//if 'what 2 erase' is root
         {
             pthread_mutex_lock(&tree->treeLock);
             pthread_mutex_lock(&p->nodeLock);
