@@ -49,13 +49,13 @@ void rand_gen(unsigned int* arr, unsigned int max)
     unsigned int rand_i = 0;
     unsigned int tmp = 0;
 
-    for(i=0; i < max; i++)
-        arr[i] = i+1;
+    for(i=1; i <= max; i++)
+        arr[i-1] = i;
     
     srand((unsigned)time(NULL));
     for(i=0; i < max; i++)
     {
-        rand_i = ((((unsigned int)rand()<<15)|rand())%max) + 1;
+        rand_i = ((((unsigned int)rand()<<15)|rand())%max);
         tmp = arr[i];
         arr[i] = arr[rand_i];
         arr[rand_i] = tmp;
