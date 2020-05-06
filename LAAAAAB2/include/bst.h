@@ -10,7 +10,7 @@
 #include "bst.h"
 
 #define MAX_NODE 1000000
-#define MAX_THREAD 50
+#define MAX_THREAD 100
 #define TRUE 1
 #define FALSE 0
 
