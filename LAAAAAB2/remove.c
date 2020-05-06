@@ -26,13 +26,9 @@ int remove_Xmutex(BST *tree, unsigned int x)
             q = p;
             p = p -> l_child;
         }
-        else break;
+        else if(p->key == x) 
+            break;
     }
-        if(!q)//dbg
-        printf("whatthe\n");
-
-        if(x==p->key)//dbg
-        printf("SAME\n");
 
     if(!p)//not found
         return FALSE;
@@ -142,7 +138,8 @@ int remove_cg(BST *tree, unsigned int x)
             q = p;
             p = p -> l_child;
         }
-        else break;
+        else if(p->key == x) 
+            break;
     }
 
         if(!q)//dbg
@@ -267,19 +264,18 @@ int remove_fg(BST *tree, unsigned int x)
     while(p)
     {
         //find place for x
-        if(p->key == x)
-            break; 
-
         if(p->key < x)
         {
             q = p;
-            p = p->r_child;
+            p = p-> r_child;
         }
-        else
+        else if(p->key > x)
         {
             q = p;
-            p = p->l_child;
+            p = p -> l_child;
         }
+        else if(p->key == x) 
+            break;
     }
 
 
