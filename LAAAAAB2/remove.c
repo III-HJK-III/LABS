@@ -15,22 +15,21 @@ int remove_Xmutex(BST *tree, unsigned int x)
 
     while(p)
     {
-        //find place for x
-        if(p->key < x)
-        {
-            q = p;
-            p = p-> r_child;
-        }
+        if(x == p->key)
+            break;
         else if(p->key > x)
         {
             q = p;
-            p = p -> l_child;
+            p = p->l_child;
         }
-        else if(p->key == x) 
-            break;
+        else
+        {
+            q = p;
+            p = p->r_child;
+        }
     }
-
-    if(!p)//not found
+    
+    if(!p)
         return FALSE;
 
     if(!p->l_child && !p->r_child)//no child
@@ -142,11 +141,8 @@ int remove_cg(BST *tree, unsigned int x)
             break;
     }
 
-    pthread_mutex_lock(&tree->treeLock);
-    pthread_mutex_lock(&p->nodeLock);
-    printf("AAAAAAAA\n");
-    pthread_mutex_lock(&q->nodeLock);
-    printf("BBBBBBBBBB\n");
+    if(!p)//not found
+        return FALSE;
 
     if(!p->l_child && !p->r_child)//no child
     {
