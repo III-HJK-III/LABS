@@ -66,7 +66,6 @@ void rand_gen(unsigned int arr[], unsigned int max)
 //functions for thread run
 void* seedling(void *arg)//create tree
 {
-
     thread_arg *th_arg = (thread_arg *)arg;
     BST *tree = th_arg->tree;
     unsigned int *data = th_arg->arr;
@@ -83,7 +82,6 @@ void* seedling(void *arg)//create tree
 
 void* lumberjack(void *arg)//destrory tree
 {
-
     thread_arg *th_arg = (thread_arg *)arg;
     BST *tree = th_arg->tree;
     unsigned int *data = th_arg->arr;
@@ -92,6 +90,7 @@ void* lumberjack(void *arg)//destrory tree
     unsigned int i;
     unsigned int test;
     for(i=start ; i < end; i++ ){
+        printf("%u %u WA!\n",i, data[i]);
         test = remove(tree, data[i]);
         assert(test); // fail to remove one node -no node matching the input key-
     }
