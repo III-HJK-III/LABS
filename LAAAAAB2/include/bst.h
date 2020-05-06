@@ -61,7 +61,7 @@ void ioP(Node* go, unsigned int *cnt);
 void* seedling(void *arg);
 
 //node searching func.
-Node* Search(BST *_Node, int value);
+Node* Search(BST *_Node, unsigned int value);
 void* lumberjack(void *arg);
 
 //node inserting func.
