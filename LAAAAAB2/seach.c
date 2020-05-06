@@ -1,6 +1,6 @@
 #include "bst.h"
 
-Node* Search(BST *_Node, unsinged int value)
+Node* Search(BST *_Node, unsigned int value)
 {
 	Node *Value = _Node->root;
 	
