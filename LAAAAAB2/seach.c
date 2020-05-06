@@ -6,7 +6,6 @@ Node* Search(BST *_Node, unsigned int value)
 	
 	if(Value == NULL)
 	{
-		printf("FAIL!!!\n");
 		return NULL;
 	}
 

@@ -38,6 +38,7 @@ void ioP(Node *go)
     {
         ioP(go->l_child);
         counter++;
+        //printf("ME %u\n",go->key);
         ioP(go->r_child);
     }
 }

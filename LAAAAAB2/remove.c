@@ -7,31 +7,23 @@ int remove_Xmutex(BST *tree, unsigned int x)
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
 
-    if(!p)
-    {
-        printf("Empty tree!!!\n");
-        return TRUE;
-    }
-
     while(p)
     {
-        //find place for x
-        if(p->key == x)
-            break; 
-
-        else if(p->key < x)
-        {
-            q = p;
-            p = p->r_child;
-        }
-        else
+        if(x == p->key)
+            break;
+        else if(p->key > x)
         {
             q = p;
             p = p->l_child;
         }
+        else
+        {
+            q = p;
+            p = p->r_child;
+        }
     }
-
-    if(!p)//not found
+    
+    if(!p)
         return FALSE;
 
     if(!p->l_child && !p->r_child)//no child
@@ -120,35 +112,32 @@ int remove_cg(BST *tree, unsigned int x)
     Node* q = NULL;//p's parent
     Node* cont = NULL;//Used for lock
 
-    if(!p)
-    {
-        printf("Empty tree!!!\n");
-        return TRUE;
-    }
-
-    pthread_mutex_lock(&tree->treeLock);
-    pthread_mutex_lock(&p->nodeLock);
-    pthread_mutex_lock(&q->nodeLock);
     while(p)
     {
-        //find place for x
-        if(p->key == x)
-            break; 
-
-        if(p->key < x)
+        if(x == p->key)
+            break;
+        else if(p->key > x)
         {
+            pthread_mutex_lock(&tree->treeLock);
             q = p;
-            p = p->r_child;
+            p = p->l_child;
+            pthread_mutex_unlock(&tree->treeLock);
         }
         else
         {
+            pthread_mutex_lock(&tree->treeLock);
             q = p;
-            p = p->l_child;
+            p = p->r_child;
+            pthread_mutex_unlock(&tree->treeLock);
         }
     }
-
-    if(!p)//not found
+    
+    if(!p)
         return FALSE;
+
+    pthread_mutex_lock(&q->nodeLock);
+    pthread_mutex_lock(&p->nodeLock);
+    pthread_mutex_lock(&tree->treeLock);
 
     if(!p->l_child && !p->r_child)//no child
     {
@@ -248,31 +237,23 @@ int remove_fg(BST *tree, unsigned int x)
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
 
-    if(!p)
-    {
-        printf("Empty tree!!!\n");
-        return TRUE;
-    }
-
     while(p)
     {
-        //find place for x
-        if(p->key == x)
-            break; 
-
-        if(p->key < x)
-        {
-            q = p;
-            p = p->r_child;
-        }
-        else
+        if(x == p->key)
+            break;
+        else if(p->key > x)
         {
             q = p;
             p = p->l_child;
         }
+        else
+        {
+            q = p;
+            p = p->r_child;
+        }
     }
-
-    if(!p)//not found
+    
+    if(!p)
         return FALSE;
 
     if(!p->l_child && !p->r_child)//no child
@@ -406,7 +387,9 @@ int remove_fg(BST *tree, unsigned int x)
             pthread_mutex_lock(&q->nodeLock);
             p->key = temp->key;
             q->r_child = temp->l_child;
+            pthread_mutex_lock(&temp->nodeLock);
             temp->l_child = NULL;
+            pthread_mutex_unlock(&temp->nodeLock);
             pthread_mutex_unlock(&q->nodeLock);
             pthread_mutex_unlock(&p->nodeLock);
             pthread_mutex_unlock(&tree->treeLock);
