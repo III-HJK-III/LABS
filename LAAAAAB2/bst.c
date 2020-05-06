@@ -21,7 +21,7 @@ void init_node(Node *nd, unsigned int inval)
 void io_trav(BST *tree, unsigned int *cnt)
 {
     *cnt = 0;
-        if(tree -> root)
+        if(tree -> root == NULL)
     {
         printf("Empty!!\n");
         return;
