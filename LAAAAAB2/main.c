@@ -3,6 +3,8 @@
 #include "bst.h"
 
 extern unsigned int counter;//for inorder trav.
+extern unsigned int data[];
+
 
 int main(int argc, char *argv[])
 {
@@ -76,8 +78,6 @@ int main(int argc, char *argv[])
     init_tree(&Sephiroth);
     unsigned int i = 0;
     unsigned int test = 0;
-
-    unsigned int *data = (unsigned int*)malloc(sizeof(unsigned int)*MAX_NODE);
     assert(data != NULL);
     rand_gen(data, MAX_NODE);
 
