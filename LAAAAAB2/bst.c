@@ -32,13 +32,13 @@ void io_trav(BST *tree, unsigned int *cnt)
     return;
 }
 
-void ioP(Node* go, maArr *arr)
+void ioP(Node* go, unsigned int *cnt)
 {
     if(go)
     {
-        ioP(go->l_child, arr);
+        ioP(go->l_child, cnt);
         *cnt++;
-        ioP(go->r_child, arr);
+        ioP(go->r_child, cnt);
     }
 }
 
