@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
             if(!test)
             {
                 io_trav(&Sephiroth);
-                printf("%u %u ????\n",i,counter);
+                printf("%u %u %u ????\n",i,data[i],counter);
             }
             assert(test);
         }
