@@ -104,6 +104,12 @@ int main(int argc, char *argv[])
         printf("Starting Deleting BST......\n");
         for(i = 0; i < MAX_NODE; i++)
         {
+
+
+
+
+            
+            printf("RM %u!!!\n",data[i]);
             test = rm_f(&Sephiroth, data[i]);
             assert(test);
         }

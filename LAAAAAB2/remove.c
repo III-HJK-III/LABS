@@ -13,8 +13,6 @@ int remove_Xmutex(BST *tree, unsigned int x)
         return TRUE;
     }
 
-
-/*
     while(p)
     {
         //find place for x
@@ -31,25 +29,6 @@ int remove_Xmutex(BST *tree, unsigned int x)
             q = p;
             p = p->l_child;
         }
-    }
-
-
-    */
-
-        while(1)
-    {
-        //find place for x
-        if(p->key < x)
-        {
-            q = p;
-            p = p->r_child;
-        }
-        else if(p->key > x)
-        {
-            q = p;
-            p = p->l_child;
-        }
-        else    break;
     }
 
     if(!p)//not found
