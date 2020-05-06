@@ -49,7 +49,7 @@ void rand_gen(unsigned int* arr, unsigned int max)
     unsigned int rand_i = 0;
     unsigned int tmp = 0;
 
-    for(i=0; i < max,; i++)
+    for(i=0; i < max; i++)
         arr[i] = i+1;
     
     srand((unsigned)time(NULL));
@@ -70,7 +70,7 @@ void* seedling(void *arg)//create tree
     BST *tree = th_arg->tree;
     unsigned int *data = th_arg->arr;
     unsigned int start = th_arg->start, end = th_arg->end;
-    int (*insert)(BST*,unsigned int) = func;
+    int (*insert)(BST*,unsigned int) = th_arg->func;
     unsigned int i;
     unsigned int test;
 
@@ -87,7 +87,7 @@ void* lumberjack(void *arg)//destrory tree
     BST *tree = th_arg->tree;
     unsigned int *data = th_arg->arr;
     unsigned int start = th_arg->start, end = th_arg->end;
-    void (*remove)(BST*,unsigned int) = func;
+    void (*remove)(BST*,unsigned int) = th_arg->func;
     unsigned int i;
     unsigned int test;
     for(i=start ; i < end; i++ ){
