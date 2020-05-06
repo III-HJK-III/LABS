@@ -151,6 +151,8 @@ int remove_cg(BST *tree, unsigned int x)
 
     if(!p->l_child && !p->r_child)//no child
     {
+        if(p == tree->root)//if 'what 2 erase' is root
+            tree -> root = NULL;
         else if(p == q->l_child)
             q->l_child = NULL;
         else
