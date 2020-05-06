@@ -28,6 +28,8 @@ int remove_Xmutex(BST *tree, unsigned int x)
         }
         else break;
     }
+        if(!q)//dbg
+        printf("whatthe\n");
 
     if(!p)//not found
         return FALSE;
@@ -144,7 +146,7 @@ int remove_cg(BST *tree, unsigned int x)
         return FALSE;
         
     if(!q)//dbg
-        printf("whatthe\n");;
+        printf("whatthe\n");
 
     pthread_mutex_lock(&tree->treeLock);
     pthread_mutex_lock(&p->nodeLock);
