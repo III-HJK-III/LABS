@@ -127,14 +127,6 @@ int insert_FineLock(BST *_Tree, unsigned int value)
 		return FALSE;
 	}
 
-	pthread_mutex_lock(&_Tree->treeLock);            //Lock _Tree
-	if (_Tree->root == NULL)                             //if root is empty
-	{
-		_Tree->root = NewNode;
-	}
-	pthread_mutex_unlock(&_Tree->treeLock);          //Unlock
-
-
 	int tmp = TRUE;
 	while(_Tree->root && tmp )
 	{
@@ -159,6 +151,13 @@ int insert_FineLock(BST *_Tree, unsigned int value)
 		}
 		pthread_mutex_unlock(&Value->nodeLock);  //Unlock
 	}
+
+	pthread_mutex_lock(&_Tree->treeLock);            //Lock _Tree
+	if (_Tree->root == NULL)                             //if root is empty
+	{
+		_Tree->root = NewNode;
+	}
+	pthread_mutex_unlock(&_Tree->treeLock);          //Unlock
 
 	return TRUE;
 }
