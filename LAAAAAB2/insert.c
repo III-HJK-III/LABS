@@ -14,18 +14,17 @@ int insert_Xmutex(BST *_Tree, unsigned int value)
 
 	init_node(NewNode, value);                         //make NewNode
 	
-	if (_Tree->root == NULL)                           //if root is empty
-	{
-		_Tree->root = NewNode;
-		return TRUE;
-	}
-	
 	if (Search(_Tree ,value))                          //what if value is already there?
 	{
 		free(NewNode);
 		return FALSE;
 	}
 
+	if (_Tree->root == NULL)                           //if root is empty
+	{
+		_Tree->root = NewNode;
+		return TRUE;
+	}
 
 	Node *Value = _Tree->root;                         //declare Value for value
 
@@ -63,19 +62,19 @@ int insert_CoarseLock(BST *_Tree, unsigned int value)
 		return FALSE;        
 					
 	init_node(NewNode, value);                          //make NewNode
-	
+
+	if (Search(_Tree ,value))                           //what if value is already there?
+	{
+		free(NewNode);
+		return FALSE;
+	}
+
 	if (_Tree->root == NULL)                            //if root is empty
 	{
 		pthread_mutex_lock(&_Tree->treeLock);           //Lock _Tree
 		_Tree->root = NewNode;
 		pthread_mutex_unlock(&_Tree->treeLock);         //Unlock
 		return TRUE;
-	}
-	
-	if (Search(_Tree ,value))                           //what if value is already there?
-	{
-		free(NewNode);
-		return FALSE;
 	}
 
 	Node *Value = _Tree->root;                          //declare Value for value
@@ -120,19 +119,19 @@ int insert_FineLock(BST *_Tree, unsigned int value)
 		return FALSE;        
 					
 	init_node(NewNode, value);                           //make NewNode
-	
+
+	if (Search(_Tree ,value))                            //what if value is already there?
+	{
+		free(NewNode);
+		return FALSE;
+	}
+
 	if (_Tree->root == NULL)                             //if root is empty
 	{
 		pthread_mutex_lock(&_Tree->treeLock);            //Lock _Tree
 		_Tree->root = NewNode;
 		pthread_mutex_unlock(&_Tree->treeLock);          //Unlock
 		return TRUE;
-	}
-	
-	if (Search(_Tree ,value))                            //what if value is already there?
-	{
-		free(NewNode);
-		return FALSE;
 	}
 
 	Node *Value = _Tree->root;                           //declare Value for value
