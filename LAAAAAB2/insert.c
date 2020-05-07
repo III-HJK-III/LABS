@@ -135,6 +135,7 @@ int insert_FineLock(BST *_Tree, unsigned int value)
 	pthread_mutex_unlock(&_Tree->treeLock);          //Unlock
 
 
+	int tmp = TRUE;
 	while(_Tree->root && tmp )
 	{
 		pthread_mutex_lock(&Value->nodeLock);    //Lock Value
