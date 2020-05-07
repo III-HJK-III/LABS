@@ -146,11 +146,11 @@ int remove_Xmutex(BST *tree, unsigned int x)
 //remove with coarse-grained lock
 int remove_cg(BST *tree, unsigned int x)
 {
+    pthread_mutex_lock(&tree->treeLock);
     Node* p = tree -> root;//what 2 erase
     Node* q = NULL;//p's parent
     Node* cont = NULL;
 
-    pthread_mutex_lock(&tree->treeLock);
     while(p)
     {
         if(x == p->key)
