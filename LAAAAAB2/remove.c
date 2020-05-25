@@ -359,7 +359,7 @@ int remove_fg(BST *tree, unsigned int x)
         q = p;
         if(q->l_child && q->r_child)
         {
-            p = (q->key < x) ? q->r_child : q->l_child;
+            p = (x <= q->key) ? q->l_child : q->r_child;
         }
         else if(q->l_child)
         {
@@ -380,25 +380,21 @@ int remove_fg(BST *tree, unsigned int x)
                 printf("p is TRUE_OUT!!\n");
                 break;
             }
-            else if(p->key > x)
+            else if(x < p->key)
             {
                 pthread_mutex_unlock(&q->nodeLock);
                 q = p;
                 p = q->l_child;
-                printf("            WHATSSSSS1!!!!!!!\n");
                 if(p)
                     pthread_mutex_lock(&p->nodeLock);
-                printf("            FEWWWWWWW1!!!!!!!\n");
             }
             else
             {
                 pthread_mutex_unlock(&q->nodeLock);
                 q = p;
                 p = q->r_child;
-                printf("            WHATSSSSS2!!!!!!!\n");
                 if(p)
                     pthread_mutex_lock(&p->nodeLock);
-                printf("            FEWWWWWWW2!!!!!!!\n");
             }
             if(p)
                 printf("p is TRUE!!\n");
