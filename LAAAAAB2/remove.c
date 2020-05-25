@@ -344,6 +344,7 @@ printf("IM HERE 1 !!\n");
             tree->root = NULL;
             pthread_mutex_unlock(&tree->treeLock);
         }
+printf("IM GONE 1 !!\n");
     }
     //only one node left && it IS not x
     else if(!p->l_child && !p->r_child)
@@ -430,6 +431,7 @@ printf("IM HERE 2 !!\n");
             q = p->r_child;
             pthread_mutex_unlock(&q->nodeLock);
         }
+printf("IM GONE 2 !!\n");
     }
 
     pthread_mutex_unlock(&p->nodeLock);
