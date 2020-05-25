@@ -144,7 +144,7 @@ int main(int argc, char *argv[])
             printf("Go %u!!!\n",i);
             thread_arg *th_arg = &threads[i];
             th_arg->tree = &Sephiroth;
-            th_arg->arr = data;
+            th_arg->arr = rm_data;
             th_arg->start = i*term;
             th_arg->end = (i+1)*term;
             th_arg->func = rm_f;
