@@ -79,8 +79,10 @@ int main(int argc, char *argv[])
 
 //generating MAX_NODE keys
     unsigned int *data = (unsigned int*)malloc(sizeof(unsigned int)*MAX_NODE);
-    assert(data != NULL);
+    unsigned int *rm_data = (unsigned int*)malloc(sizeof(unsigned int)*MAX_NODE);
+    assert(data && rm_data);
     rand_gen(data, MAX_NODE);
+    rand_gen(rm_data, MAX_NODE);
 
     if(option == 3)
     {
@@ -103,7 +105,7 @@ int main(int argc, char *argv[])
         printf("Starting Deleting BST......\n");
         for(i = 0; i < MAX_NODE; i++)
         {
-            test = rm_f(&Sephiroth, data[i]);
+            test = rm_f(&Sephiroth, rm_data[i]);
             assert(test);
         }
         printf("Done Deleting BST!\n");
@@ -142,7 +144,7 @@ int main(int argc, char *argv[])
             printf("Go %u!!!\n",i);
             thread_arg *th_arg = &threads[i];
             th_arg->tree = &Sephiroth;
-            th_arg->arr = data;
+            th_arg->arr = rm_data;
             th_arg->start = i*term;
             th_arg->end = (i+1)*term;
             th_arg->func = rm_f;
