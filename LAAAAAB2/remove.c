@@ -378,7 +378,10 @@ int remove_fg(BST *tree, unsigned int x)
         {
             printf("        IN!!!!!!!\n");
             if(x == p->key)
+            {
+                printf("p is TRUE_OUT!!\n");
                 break;
+            }
             else if(p->key > x)
             {
                 pthread_mutex_unlock(&q->nodeLock);
@@ -402,6 +405,7 @@ int remove_fg(BST *tree, unsigned int x)
         //there is no x!!
         if(!p)
         {
+            printf("p is FALSE...\n");
             pthread_mutex_unlock(&q->nodeLock);
             return FALSE;
         }
