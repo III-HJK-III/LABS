@@ -361,14 +361,16 @@ int remove_fg(BST *tree, unsigned int x)
         {
             p = (x <= q->key) ? q->l_child : q->r_child;
         }
-        else if(q->l_child)
+        else if(q->l_child && !q->r_child)
         {
             p = q->l_child;
         }
-        else
+        else if(!q->l_child && q->r_child)
         {
             p = q->r_child;
         }
+        else
+            printf("Ummmm now what?\n");
         pthread_mutex_lock(&p->nodeLock);
 
         //finding the right p
