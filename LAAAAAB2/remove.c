@@ -305,7 +305,7 @@ int remove_fg(BST *tree, unsigned int x)
     //it was root!
     if(p->key == x)
     {
-cout << "IM HERE 1 !!\n";
+printf("IM HERE 1 !!\n");
         if(p->l_child && p->r_child)
         {
             Node* p_temp = p;//parent
@@ -353,7 +353,7 @@ cout << "IM HERE 1 !!\n";
     }
     else
     {
-cout << "IM HERE 2 !!\n";
+printf("IM HERE 2 !!\n");
         //setting q & p
         q = p;
         if(q->l_child && q->r_child)
