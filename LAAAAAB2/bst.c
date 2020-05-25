@@ -3,10 +3,6 @@
 
 unsigned int counter = 0;//for inorder trav.
 
-
-unsigned char ckck[MAX_NODE]={0,};//for idbg
-
-
 //for initializing stuffs
 void init_tree(BST *tree)
 {
@@ -41,14 +37,7 @@ void ioP(Node *go)
     if(go)
     {
         ioP(go->l_child);
-
-
-        if(!ckck[go->key-1])
-            ckck[go->key-1]++;
-
-
         counter++;
-        //printf("ME %u\n",go->key);
         ioP(go->r_child);
     }
 }

@@ -4,8 +4,6 @@
 
 extern unsigned int counter;//for inorder trav.
 
-extern unsigned char ckck[MAX_NODE];//for idbg
-
 int main(int argc, char *argv[])
 {
     if(argc != 3)
@@ -54,8 +52,7 @@ int main(int argc, char *argv[])
         case 2:
             printf("BST by Multi-Thread With Fine-grained Lock\n");
             printf("Using %d threads...\n",thread_no);
-            //ins_f = insert_FineLock;
-            ins_f = insert_CoarseLock;
+            ins_f = insert_FineLock;
             rm_f = remove_fg;
             break;
 
@@ -125,7 +122,7 @@ int main(int argc, char *argv[])
         for(i=0; i < thread_no ; i++){
             thread_arg *th_arg = &threads[i];
             th_arg->tree = &Sephiroth;
-            th_arg->arr = data;
+            th_arg->arr = rm_data;
             th_arg->start = i*term;
             th_arg->end = (i+1)*term;
             th_arg->func = ins_f;
@@ -139,23 +136,6 @@ int main(int argc, char *argv[])
         printf("Starting inorder traversal\n");
         io_trav(&Sephiroth);
         printf("Done inorder traversal\n");
-
-
-        for(i = 0; i < MAX_NODE; i++)
-        {
-            if(!ckck[i])
-            {
-                printf("THIS %d IS NOT HERE!!\n",i);
-                assert(ckck[i]);
-            }
-            else if(1<ckck[i])
-            {
-                printf("THIS %d IS DUPLICATED!!\n",i);
-                assert(1>ckck[i]);
-            }
-        }
-
-
         printf("Been travel through %u nodes!\n",counter);
 
         //tree deleting part
