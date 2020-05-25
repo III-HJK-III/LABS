@@ -136,6 +136,11 @@ int main(int argc, char *argv[])
         printf("Starting inorder traversal\n");
         io_trav(&Sephiroth);
         printf("Done inorder traversal\n");
+
+        if(counter != MAX_NODE)
+        {
+            assert(!counter);
+        }
         printf("Been travel through %u nodes!\n",counter);
 
         //tree deleting part
