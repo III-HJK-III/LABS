@@ -370,13 +370,17 @@ int remove_fg(BST *tree, unsigned int x)
             p = q->r_child;
         }
         else
+        {
             printf("Ummmm now what?\n");
+            pthread_mutex_unlock(&p->nodeLock);
+            return FALSE;
+        }
         pthread_mutex_lock(&p->nodeLock);
 
         //finding the right p
         while(p)
         {
-            printf("        IN!!!!!!!\n");
+            printf("        x : %d ,p : %d\n",x,p->key);
             if(x == p->key)
             {
                 printf("p is TRUE_OUT!!\n");
