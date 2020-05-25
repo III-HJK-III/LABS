@@ -398,7 +398,7 @@ int remove_fg(BST *tree, unsigned int x)
                 printf("            WHATSSSSS2!!!!!!!\n");
                 if(p)
                     pthread_mutex_lock(&p->nodeLock);
-                printf("            FEWWWWWWW2!!!!!!!\n")
+                printf("            FEWWWWWWW2!!!!!!!\n");
             }
             if(p)
                 printf("p is TRUE!!\n");
