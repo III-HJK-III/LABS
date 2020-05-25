@@ -305,7 +305,7 @@ int remove_fg(BST *tree, unsigned int x)
     //it was root!
     if(p->key == x)
     {
-printf("IM HERE 1 !!\n");
+printf("    IM HERE 1 !!\n");
         if(p->l_child && p->r_child)
         {
             Node* p_temp = p;//parent
@@ -344,7 +344,7 @@ printf("IM HERE 1 !!\n");
             tree->root = NULL;
             pthread_mutex_unlock(&tree->treeLock);
         }
-printf("IM GONE 1 !!\n");
+printf("    IM GONE 1 !!\n");
     }
     //only one node left && it IS not x
     else if(!p->l_child && !p->r_child)
@@ -354,7 +354,7 @@ printf("IM GONE 1 !!\n");
     }
     else
     {
-printf("IM HERE 2 !!\n");
+printf("    IM HERE 2 !!\n");
         //setting q & p
         q = p;
         if(q->l_child && q->r_child)
@@ -393,6 +393,7 @@ printf("IM HERE 2 !!\n");
                     pthread_mutex_lock(&p->nodeLock);
             }
         }
+        printf("        OUT!!!!!!!\n");
         //there is no x!!
         if(!p)
         {
@@ -415,6 +416,7 @@ printf("IM HERE 2 !!\n");
                 c_temp = c_temp ->r_child;
                 pthread_mutex_lock(&c_temp->nodeLock);
             }
+            printf("        OUT@@@@@@@@\n");
             p->key = c_temp->key;
             pthread_mutex_unlock(&p->nodeLock);
             p_temp->r_child = NULL;
@@ -431,7 +433,7 @@ printf("IM HERE 2 !!\n");
             q = p->r_child;
             pthread_mutex_unlock(&q->nodeLock);
         }
-printf("IM GONE 2 !!\n");
+printf("    IM GONE 2 !!\n");
     }
 
     pthread_mutex_unlock(&p->nodeLock);
