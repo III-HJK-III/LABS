@@ -54,9 +54,9 @@ int main(int argc, char *argv[])
         case 2:
             printf("BST by Multi-Thread With Fine-grained Lock\n");
             printf("Using %d threads...\n",thread_no);
-            ins_f = insert_FineLock;
-            //rm_f = remove_fg;
-            rm_f = remove_cg;
+            //ins_f = insert_FineLock;
+            ins_f = insert_CoarseLock;
+            rm_f = remove_fg;
             break;
 
         case 3:
