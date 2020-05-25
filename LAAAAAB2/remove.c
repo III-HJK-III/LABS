@@ -477,9 +477,10 @@ int remove_fg(BST *tree, unsigned int x)
     }
 
     //if(cont)
-        //p = cont;
+        //p = cont;  
     pthread_mutex_unlock(&p->nodeLock);
     free(p);
+    p = NULL;
     return TRUE;
 }
 
