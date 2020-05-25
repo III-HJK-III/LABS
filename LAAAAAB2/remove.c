@@ -302,7 +302,7 @@ int remove_fg(BST *tree, unsigned int x)
 
     while(p)
     {
-        printf("first this?\n");
+        //printf("first this?\n");
         if(x == p->key)
             break;
         else if(p->key > x)
@@ -356,7 +356,7 @@ int remove_fg(BST *tree, unsigned int x)
         else
         {
             Node* temp = p->l_child;
-            printf("second this?\n");
+            //printf("second this?\n");
             pthread_mutex_lock(&temp->nodeLock);
             Node* p_temp = p;//parent of temp;
             while(temp->r_child)
@@ -365,7 +365,7 @@ int remove_fg(BST *tree, unsigned int x)
                     pthread_mutex_unlock(&p_temp->nodeLock);
                 p_temp = temp;
                 temp = temp ->r_child;
-                printf("third this?\n");
+                //printf("third this?\n");
                 pthread_mutex_lock(&temp->nodeLock);
             }
         
@@ -447,7 +447,7 @@ int remove_fg(BST *tree, unsigned int x)
                     pthread_mutex_unlock(&p_temp->nodeLock);
                 p_temp = temp;
                 temp = temp ->r_child;
-                printf("fourth this?\n");
+                //printf("fourth this?\n");
                 pthread_mutex_lock(&temp->nodeLock);
                 
             }
@@ -483,7 +483,7 @@ int remove_fg(BST *tree, unsigned int x)
     //if(cont)
         //p = cont;  
     pthread_mutex_unlock(&p->nodeLock);
-    printf("last this?\n");
+    //printf("last this?\n");
     free(p);
     p = NULL;
     return TRUE;
