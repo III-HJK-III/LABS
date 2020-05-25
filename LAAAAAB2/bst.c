@@ -91,6 +91,6 @@ void* lumberjack(void *arg)//destrory tree
     unsigned int test;
     for(i=start ; i < end; i++ ){
         test = remove(tree, data[i]);
-        assert(test); // fail to remove one node -no node matching the input key-
+        //assert(test); // fail to remove one node -no node matching the input key-
     }
 }
