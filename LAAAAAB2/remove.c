@@ -360,14 +360,17 @@ int remove_fg(BST *tree, unsigned int x)
         if(q->l_child && q->r_child)
         {
             p = (x <= q->key) ? q->l_child : q->r_child;
+            printf("RLRL Dobble\n");
         }
         else if(q->l_child && !q->r_child)
         {
             p = q->l_child;
+            printf("LLLLLLLLLLLL\n");
         }
         else if(!q->l_child && q->r_child)
         {
             p = q->r_child;
+            printf("RRRRRRRRRRRR\n");
         }
         else
         {
