@@ -374,6 +374,7 @@ printf("    IM HERE 2 !!\n");
         //finding the right p
         while(p)
         {
+            printf("        IN!!!!!!!\n");
             if(x == p->key)
                 break;
             else if(p->key > x)
@@ -410,6 +411,7 @@ printf("    IM HERE 2 !!\n");
 
             while(c_temp->r_child)
             {
+                printf("        IN@@@@@@@@\n");
                 if(p_temp->key != x)
                     pthread_mutex_unlock(&p_temp->nodeLock);
                 p_temp = c_temp;
