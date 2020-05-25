@@ -364,7 +364,7 @@ int remove_fg(BST *tree, unsigned int x)
         }
         else
         {
-            p -> q->r_child;
+            p = q->r_child;
         }
         pthread_mutex_lock(&p->nodeLock);
 
