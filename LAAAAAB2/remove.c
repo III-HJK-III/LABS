@@ -369,9 +369,7 @@ int remove_fg(BST *tree, unsigned int x)
         {
             p = q->r_child;
         }
-        printf("            WHATSSSSS!!!!!!!\n");
         pthread_mutex_lock(&p->nodeLock);
-        printf("            FEWWWWWWW!!!!!!!\n");
 
         //finding the right p
         while(p)
@@ -386,17 +384,21 @@ int remove_fg(BST *tree, unsigned int x)
             {
                 pthread_mutex_unlock(&q->nodeLock);
                 q = p;
-                p = p->l_child;
+                p = q->l_child;
+                printf("            WHATSSSSS1!!!!!!!\n");
                 if(p)
                     pthread_mutex_lock(&p->nodeLock);
+                printf("            FEWWWWWWW1!!!!!!!\n");
             }
             else
             {
                 pthread_mutex_unlock(&q->nodeLock);
                 q = p;
-                p = p->r_child;
+                p = q->r_child;
+                printf("            WHATSSSSS2!!!!!!!\n");
                 if(p)
                     pthread_mutex_lock(&p->nodeLock);
+                printf("            FEWWWWWWW2!!!!!!!\n")
             }
             if(p)
                 printf("p is TRUE!!\n");
