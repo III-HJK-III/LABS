@@ -143,8 +143,15 @@ int main(int argc, char *argv[])
         for(i = 0; i < MAX_NODE; i++)
         {
             if(!ckck[i])
+            {
                 printf("THIS %d IS NOT HERE!!\n",i);
-            assert(ckck[i]);
+                assert(ckck[i]);
+            }
+            else if(1<ckck[i])
+            {
+                printf("THIS %d IS DUPLICATED!!\n",i);
+                assert(1>ckck[i]);
+            }
         }
 
 
