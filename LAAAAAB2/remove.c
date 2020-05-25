@@ -295,11 +295,10 @@ int remove_cg(BST *tree, unsigned int x)
 //test
 int remove_fg(BST *tree, unsigned int x)
 {
-    pthread_mutex_lock(&tree->treeLock);
     Node* p = tree -> root;//what 2 erase
-    pthread_mutex_unlock(&tree->treeLock);
+    pthread_mutex_lock(&p->nodeLock);
     Node* q = NULL;//p's parent
-    Node* cont = NULL;
+    //Node* cont = NULL;
 
     while(p)
     {
