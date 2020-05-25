@@ -46,7 +46,7 @@ void ioP(Node *go)
         if(!ckck[go->key])
             ckck[go->key]++;
 
-            
+
         counter++;
         //printf("ME %u\n",go->key);
         ioP(go->r_child);
@@ -104,7 +104,3 @@ void* lumberjack(void *arg)//destrory tree
         assert(test); // fail to remove one node -no node matching the input key-
     }
 }
-
-
-//for debugging
-void checking_nodes(unsigned int arr[], unsigned int max)
