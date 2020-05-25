@@ -3,6 +3,10 @@
 
 unsigned int counter = 0;//for inorder trav.
 
+
+unsigned char ckck[MAX_NODE]={0,};//for idbg
+
+
 //for initializing stuffs
 void init_tree(BST *tree)
 {
@@ -37,6 +41,12 @@ void ioP(Node *go)
     if(go)
     {
         ioP(go->l_child);
+
+
+        if(!ckck[go->key])
+            ckck[go->key]++;
+
+            
         counter++;
         //printf("ME %u\n",go->key);
         ioP(go->r_child);
@@ -94,3 +104,7 @@ void* lumberjack(void *arg)//destrory tree
         assert(test); // fail to remove one node -no node matching the input key-
     }
 }
+
+
+//for debugging
+void checking_nodes(unsigned int arr[], unsigned int max)

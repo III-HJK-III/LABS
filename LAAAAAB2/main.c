@@ -4,6 +4,8 @@
 
 extern unsigned int counter;//for inorder trav.
 
+extern unsigned char ckck[MAX_NODE];//for idbg
+
 int main(int argc, char *argv[])
 {
     if(argc != 3)
@@ -136,6 +138,14 @@ int main(int argc, char *argv[])
         printf("Starting inorder traversal\n");
         io_trav(&Sephiroth);
         printf("Done inorder traversal\n");
+
+
+        for(i = 0; i < MAX_NODE; i++)
+        {
+            assert(ckck[i]);
+        }
+
+
         printf("Been travel through %u nodes!\n",counter);
 
         //tree deleting part
