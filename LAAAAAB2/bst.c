@@ -43,8 +43,8 @@ void ioP(Node *go)
         ioP(go->l_child);
 
 
-        if(!ckck[go->key])
-            ckck[go->key]++;
+        if(!ckck[go->key-1])
+            ckck[go->key-1]++;
 
 
         counter++;
