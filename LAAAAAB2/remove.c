@@ -343,8 +343,6 @@ int remove_fg(BST *tree, unsigned int x)
             tree->root = NULL;
             pthread_mutex_unlock(&tree->treeLock);
         }
-
-        p->l_child = p->r_child = NULL;
     }
     //only one node left && it IS not x
     else if(!p->l_child && !p->r_child)
@@ -430,8 +428,6 @@ int remove_fg(BST *tree, unsigned int x)
             q = p->r_child;
             pthread_mutex_unlock(&q->nodeLock);
         }
-
-        p->l_child = p->r_child = NULL;
     }
 
     pthread_mutex_unlock(&p->nodeLock);
