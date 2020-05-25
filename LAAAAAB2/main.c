@@ -142,6 +142,8 @@ int main(int argc, char *argv[])
 
         for(i = 0; i < MAX_NODE; i++)
         {
+            if(!ckck[i])
+                printf("THIS %d IS NOT HERE!!\n",ckck[i]);
             assert(ckck[i]);
         }
 
