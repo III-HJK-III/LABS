@@ -437,12 +437,18 @@ int remove_fg(BST *tree, unsigned int x)
         }
         else if(p->l_child)
         {
-            q = p->l_child;
+            if(q->l_child == p)
+                q->l_child = p->l_child;
+            else
+                q->r_child = p->l_child;
             pthread_mutex_unlock(&q->nodeLock);
         }
         else
         {
-            q = p->r_child;
+            if(q->l_child == p)
+                q->l_child = p->r_child;
+            else
+                q->r_child = p->r_child;
             pthread_mutex_unlock(&q->nodeLock);
         }
         printf("    IM GONE 2 !!\n");
